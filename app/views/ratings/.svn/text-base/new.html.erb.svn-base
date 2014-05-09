@@ -1,0 +1,38 @@
+<% provide(:title, 'Rating Assignment') %>
+<aside class=" col-lg-5">
+	<section class="panel">
+		<section class="panel panel-default">
+			<header class="panel-heading "><h4>	Assign Rating Form </h4></header>
+			<div class="panel-body">
+				<div class="form-horizontal tasi-form col-md-16">
+		  		<%= form_for @rating, :url => employee_ratings_path(@employee.id) do |f| %>
+						<div class="form-group">
+					 		<%= f.label :Date , :class => "col-sm-4"%> <br />
+					 		<div class="col-sm-2 col-md-5">
+								<%= f.text_field :rating_date, :id => "datepicker", :class => "form-control dp", :value => Date.today %>
+								<%= f.hidden_field :project_manager_id, :value => current_user.id %>
+							</div>
+						</div>
+						<%= f.fields_for :rating_details do |builder| %>
+							<div class="form-group">
+							 		<%= builder.label :"#{builder.object.factor.name}" , :class => "col-sm-4 "%>
+							 		<%= builder.hidden_field :factor_id %> 
+							 		<div class="col-sm-2 col-md-5">
+										<%= builder.select :rating_value, options_for_select(builder.object.factor.factor_guidlines.pluck(:description,:value),Rating.with_rating_details((Date.today - 10).to_s,(Date.today).to_s,@employee.id,builder.object.factor.id).pluck(:rating_value).mode),:class => "form-control" %> 
+							 		</div>
+							</div>
+						<% end %>
+		  			<div class="form-group">
+				 			<%= f.label :Remarks, :class => "col-sm-4"%> <br />
+					 		<div class="col-sm-2 col-md-5">
+								<%= f.text_area :remarks, :class => "form-control" %>
+							</div>
+						</div>
+						<center><%= f.submit "Submit", :class => "btn btn-primary" %></center>
+					<% end %>
+				</div>
+			</div>
+		</section>
+	</section>
+</aside>
+<%= render 'shared/rating_side_bar' %>

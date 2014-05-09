@@ -1,0 +1,16 @@
+<% if @rating_details.present? %>
+	<% if (@selected_employees.length == 1) %>
+		$("#report").html("<%= escape_javascript(render 'single_employee') %>");
+	<% else %>
+		$("#report").html("<%= escape_javascript(render 'multiple_employees') %>");
+	<% end %>
+	$("#report").show()
+	$("#error").hide()
+	$('.example').dataTable( {
+	"aaSorting": [[ 4, "desc" ]]
+});
+<% else %>
+	<%= gflash :js => true %>
+	$("#report").hide()
+	$("#error").show()
+<% end %>

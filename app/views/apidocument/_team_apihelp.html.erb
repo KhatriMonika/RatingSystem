@@ -1,0 +1,275 @@
+<!--Team Listing starts-->
+<a name="Team-Index"  />
+<div class="panel panel-default ">
+	<div class="panel-heading"><h3>Team index</h3></div>
+ 	<div class="panel-body">
+		API URL: <br />
+		<%= "#{DOMAIN_CONFIG}" + api_v1_team_index_path %>
+		<span id="link_teamXindex"><%= "#{DOMAIN_CONFIG}" + api_v1_team_index_path %></span><br />
+		Method: <span id="method_teamXindex">GET</span><br />
+		<form class="form_teamXindex"><br />
+    		Parameters:
+    		<br/>		    
+	    	<table width='100%' cellpadding="4" cellspacing="0" border='1' bordercolor='#808080'> 	    
+		    	<thead>
+	        		<tr bgcolor="#eeeeee">
+	        			<td> Field name </td>
+	        			<td> Description </td>
+	        			<td>Example</td>
+	            		<td>Req</td>
+	            	</tr>
+	        	</thead>
+		    	<tbody>	
+			    	<tr>
+		        		<td> access_token </td>
+		        		<td> the access_token of the user </td>
+		        		<td width='210'>  </td>
+		        		<td width='30'> * </td>
+		    		</tr>
+	      		</tbody>
+      		</table>
+ 		</form>
+ 		<br/><br/>
+		Example call <br/>
+		<textarea id='example_teamXindex' class="form-control" style='font-family: Courier New' rows=4 cols=90>
+			<%= "#{DOMAIN_CONFIG}" + api_v1_team_index_path %>?auth_token=
+		</textarea><br/>
+		Example Output<br/>
+		<pre>
+{
+"complitech":{
+	"id":"nil",
+	"PMName":"Complitech",
+	"PMImage":"http://192.168.1.28:3000/assets/logo_cspl.png",
+	"Team":[
+		{
+			"Technology":"iOS",
+			"Developers":[
+			]
+		},
+		{
+			"Technology":"Android",
+			"Developers":[
+			]
+		},
+		{
+			"Technology":"PHP",
+			"Developers":[
+				{
+					"id":15,
+					"Name":"Ronak",
+					"Image":"https://secure.gravatar.com/avatar/c31eed96d939e405c5baac4edd5b442b"
+				}
+			]
+		},
+		{
+			"Technology":"Sencha",
+			"Developers":[
+			]
+		},
+		{
+			"Technology":"Ruby on Rails",
+			"Developers":[
+				{
+					"id":8,
+					"Name":"Shreya",
+					"Image":"https://secure.gravatar.com/avatar/bab176dd5351af46419bc691cb4d712b"
+				},
+				{
+					"id":9,
+					"Name":"Ankita",
+					"Image":"https://secure.gravatar.com/avatar/0c821478a5b7e507b06ab128f9b22140"
+				}
+			]
+		}
+	]
+},
+"Project_managers":[
+	{
+		"id":6,
+		"PMName":"Kirti",
+		"PMImage":"https://secure.gravatar.com/avatar/dd6ed879063c4125428e319eaea49b6b",
+		"Team":[
+			{
+				"Technology":"iOS",
+				"Developers":[
+					{
+						"id":7,
+						"Name":"Vishal",
+						"Image":"https://secure.gravatar.com/avatar/5e0889edeb061407be1c39d36ade6888",
+						"Ratings":[
+							{
+								"Rating_Date":"2014-01-31",
+								"Rating_remark":"31",
+								"Rating":[
+									{
+									"Factor_name":"Working Hours",
+									"rating":0
+									},
+									{
+									"Factor_name":"Time Doctor",
+									"rating":1
+									},
+									{
+									"Factor_name":"Task Performance",
+									"rating":4
+									},
+									{
+									"Factor_name":"Incoming Time",
+									"rating":1
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Technology":"Android",
+				"Developers":[
+				]
+			},
+			{
+				"Technology":"PHP",
+				"Developers":[
+				]
+			},
+			{
+				"Technology":"Sencha",
+				"Developers":[
+				]
+			},
+			{
+				"Technology":"Ruby on Rails",
+				"Developers":[
+					{
+						"id":11,
+						"Name":"Dipak",
+						"Image":"https://secure.gravatar.com/avatar/c15cffa6b91048853c19e41c850863e2",
+						"Ratings":[
+							{
+								"Rating_Date":"2014-02-09",
+								"Rating_remark":"",
+								"Rating":[
+									{
+									"Factor_name":"Working Hours",
+									"rating":0
+									},
+									{
+									"Factor_name":"Time Doctor",
+									"rating":-1
+									},
+									{
+									"Factor_name":"Task Performance",
+									"rating":-1
+									},
+									{
+									"Factor_name":"Incoming Time",
+									"rating":0
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+]
+}
+		</pre>
+		<a href='#top'>go to top</a>
+		</div>
+	</div>
+	<br/>
+<!-- Listing ends -->
+
+<!-- Add Member to team starts-->
+<a name="Add-Member-to-team"  />
+<div class="panel panel-default ">
+    <div class="panel-heading"><h3>Add Members to team</h3></div>
+    <div class="panel-body">
+	    API URL: <br />
+	    <span id="link_teamXaddmember"><%= "#{DOMAIN_CONFIG}" + add_member_api_v1_team_index_path %>/</span><br />
+	    Method: <span id="method_teamXaddmember">POST</span><br />
+	    Example Input for list Parameter
+	    <pre>
+{
+  "ChangedTeam" : [
+    {
+      "ToPM" : 5,
+      "ToPMNm" : "Shreya",
+      "FromPM" : "nil",
+      "FromPMNm" : "Complitech",
+      "Developer" : 6,
+      "DeveloperNm" : "Ankita"
+    },
+    {
+      "ToPM" : 6,
+      "ToPMNm" : "Kirti",
+      "FromPM" : "2",
+      "FromPMNm" : "Mahesh",
+      "Developer" : 7,
+      "DeveloperNm" : "Vishal"
+    }
+  ]
+}
+	    </pre> 
+		<form class="form_teamXaddmember"><br/>
+		    Parameters:
+		    <br/><hr/>
+			<table class="table"> 	    
+				<thead>
+					<tr bgcolor="#eeeeee">
+						<td> Field name </td>
+						<td> Description </td>
+						<td>Example</td>
+						<td>Req</td>
+					</tr>
+				</thead>
+				<tbody>	
+					<tr>
+	        			<td> access_token </td>
+	        			<td> the access_token of the user </td>
+	        			<td width='210'> <input id='input_teamXaddmember_auth_token' class="form-control" name="auth_token" class="input_teamXaddmember" size='40' onkeyup='change_teamXaddmember();' value=''> </td>
+	        			<td width='30'> * </td>
+	    			</tr>
+					<tr>
+				        <td> list</td>
+				        <td> List of employees with id and to project manager and from project manager in json format </td>
+				        <td> <input id='input_teamXaddmember_list' name="list"  size='40' onkeyup='change_teamXaddmember();' value='' class="form-control"> </td>
+				        <td width='30'> * </td>
+				    </tr>
+				</tbody>
+			</table>
+    	</form>
+    	<br/><br/>
+		Example call <br/>
+		<textarea id='example_teamXaddmember' style='font-family: Courier New' rows=4 cols=90 class="form-control">
+			<%= "#{DOMAIN_CONFIG}" + add_member_api_v1_team_index_path %>?auth_token=&list=
+		</textarea>
+		<br/><br/>
+		<input type='button' id='button_teamXaddmember' onClick='example("teamXaddmember");' value='Execute' class="btn"> <br/><br/>
+		<div id='raw_teamXaddmember' style='font-family: courier new; font-size: 10pt;'></div><br/>
+		<div id='output_teamXaddmember' style='font-family: courier new; font-size: 10pt;'></div><br />
+		<pre>
+			var apiCall = "<?=Yii::app()->createUrl('<%= "#{DOMAIN_CONFIG}" + add_member_api_v1_team_index_path %>');?>";
+			apiCall = apiCall + 'auth_token=' + escape(valauth_token);
+			apiCall = apiCall + 'list=' + escape(vallist);
+			$.getJSON(apiCall, function(r){
+			});
+		</pre>
+		<a href='#top'>go to top</a>
+	</div>
+</div>
+<br />
+<script type="text/javascript">
+    function change_teamXaddmember()
+    {
+        var link = '<%= "#{DOMAIN_CONFIG}" + add_member_api_v1_team_index_path %>/';
+        	link += "auth_token=" + escape($("#input_teamXaddmember_auth_token").val()) + "&";
+                        link += "list=" + escape($("#input_teamXaddmember_list").val());
+                           	$("#example_teamXaddmember").val(link);
+    }
+</script>
+<!-- Add Member to team end -->

@@ -1,0 +1,48 @@
+<div class="panel panel-default ">
+  <div class="panel-heading"><span>
+    <h3><i class="fa fa-plus-square-o"></i> </span> Add Factor</h3> 
+  </div>
+  <div class="panel-body">
+    <div id="factor_form">
+      <div class="form-horizontal tasi-form ">
+         <%= form_for(@factor) do |f| %>        
+        <div class="form-group">
+          <%= f.label :Factor_Name, :class => "col-sm-3  control-label" %> 
+          <div class="col-sm-2 col-md-5">
+            <%= f.text_field :name, :autofocus => true, :class => "form-control " %>
+          </div>
+        </div>
+        <h4>Factor Rating Guidlines</h4>
+        <div class="form-group col-sm-12">
+        <div class="items  col-sm-12">
+          <%= f.nested_fields_for :factor_guidlines do |f| %>
+          <table>
+            <fieldset class="item">
+              <tr><td>
+              <%= f.text_field :description, :class => "form-control", :placeholder => "Description" %></td>
+
+              <td class="col-md-5">
+              <%= f.text_field :value, :class => "form-control number", :placeholder => "Value"%></td>
+              <td align="center">
+              <a href="#" class="remove btn btn-xs btn-danger"><i class="fa fa-trash-o fa-lg"></i></a></td></tr><br>
+              <%= f.hidden_field :id %>
+              <%= f.hidden_field :_destroy %>
+            </fieldset>
+            </table>
+          <% end %>
+        </div><br>
+        <div align="left" class="col-md-5"><br>
+          <a href="#" class="add btn btn-xs btn-success"><i class="fa fa-plus-square-o fa-lg"></i> Add Guidlines</a>
+        </div>
+        <hr>
+        <div class="col-md-9" align="center"><%= f.submit "Add Factor", :class => "btn btn-info" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+   </div>
+  </div>
+</div>
+
+
+        

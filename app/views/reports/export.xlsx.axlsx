@@ -1,0 +1,103 @@
+wb = xlsx_package.workbook
+style_shout = wb.styles.add_style sz: 12, b: true, alignment: { horizontal: :center }
+meta_header_style = wb.styles.add_style sz:20, alignment: { horizontal: :center }
+heading = @header
+string_to_merge_cell="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# Build the Excel
+if @rating_details.present?
+  if (@selected_employees.length == 1)
+    if @selected_factors.present?
+      wb.add_worksheet(name: @rating_details.values.first.first.emp_name) do |sheet|
+        meta_header_row = Array.new
+        meta_header_row << @rating_details.values.first.first.emp_name
+        @selected_factors.each do |factor|
+          meta_header_row << ""
+        end
+        meta_header_row << ""
+        meta_header_row << ""
+        sheet.add_row(meta_header_row, :style => meta_header_style)
+        merge = "A1:" + string_to_merge_cell.at(@header.length - 1) + "1"
+        sheet.merge_cells merge
+        sheet.add_row heading.flatten, :style => style_shout
+        @rating_details.each do |date,values|
+          row = Array.new
+          row << date
+          values_of_factors = values.group_by(&:factor_id)
+          @selected_factors.each do |factor|
+            if values_of_factors[factor.id].present?
+              row << values_of_factors[factor.id].last.rating_value
+            else
+              row << "NA"
+            end
+          end
+          row << values.last.total_rating
+          row << values.last.remark
+          sheet.add_row row
+        end
+      end
+    else
+      wb.add_worksheet(name: @rating_details.values.first.first.emp_name) do |sheet|
+        meta_header_row = [@rating_details.values.first.first.emp_name, "",""]
+        sheet.add_row(meta_header_row, :style => meta_header_style)
+        sheet.merge_cells "A1:C1"
+        sheet.add_row heading.flatten, :style => style_shout
+        @rating_details.each do |date,values|
+          row = Array.new
+          row << date
+          row << values.last.total_rating
+          row << values.last.remark
+          sheet.add_row row
+        end
+      end
+    end
+  else
+    if @selected_factors.present?
+      @rating_details.each do |date,value|
+        wb.add_worksheet(name: date.to_s) do |sheet|
+          meta_header_row = Array.new
+          meta_header_row << date.to_s
+          @selected_factors.each do |factor|
+            meta_header_row << ""
+          end
+          meta_header_row << ""
+          meta_header_row << ""
+          sheet.add_row(meta_header_row, :style => meta_header_style)
+          merge = "A1:" + string_to_merge_cell.at(@header.length - 1) + "1"
+          sheet.merge_cells merge
+          sheet.add_row heading.flatten, :style => style_shout
+          value.group_by(&:emp_name).each do |name,values_for_one_employee|
+            row = Array.new
+            row << name
+            values_of_factors = values_for_one_employee.group_by(&:factor_id)
+            @selected_factors.each do |factor|
+              if values_of_factors[factor.id].present?
+                row << values_of_factors[factor.id].last.rating_value
+              else
+                row << "NA"
+              end
+            end
+            row << values_for_one_employee.last.total_rating
+            row << values_for_one_employee.last.remark
+            sheet.add_row row                                      
+          end
+        end
+      end
+    else
+      @rating_details.each do |date,value|
+        wb.add_worksheet(name: date.to_s) do |sheet|
+          meta_header_row = [date.to_s, "",""]
+          sheet.add_row(meta_header_row, :style => meta_header_style)
+          sheet.merge_cells "A1:C1"
+          sheet.add_row heading.flatten, :style => style_shout
+          value.each do |values_for_one_employee|
+            row = Array.new
+            row << values_for_one_employee.emp_name
+            row << values_for_one_employee.total_rating
+            row << values_for_one_employee.remark
+            sheet.add_row row                                      
+          end
+        end
+      end
+    end
+  end
+end

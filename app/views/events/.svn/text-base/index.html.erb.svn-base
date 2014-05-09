@@ -1,0 +1,66 @@
+<div class="row well">
+  <aside class="col-lg-3">
+  <section class="panel tab">
+    <header class="panel-heading tab-bg-dark-navy-blue">
+      <ul class="nav nav-tabs nav-justified ">
+        <li>
+          <a data-toggle="tab" href="#events">Events</a>
+        </li>
+        <li class="active">
+          <a href="#create-event" data-toggle="modal" class="btn btn-xs btn-warning">Create Events</a>
+        </li>
+      </ul>
+    </header>
+    <div class="panel-body">
+    <div class="tab-content tasi-tab">       
+      <% @calendars.items.each do |calendar| %>
+        <p><i class="fa fa-hand-o-right fa-lg"></i>&nbsp;&nbsp;
+          <%= link_to  calendar["summary"] ,get_events_events_path(:calendar_id => CGI::escape(calendar["id"].to_s)), :remote => true, :class => 'gcal_links' %>
+        </p>   
+      <% end %>
+    </div>
+    </div>
+  </section>
+  </aside>
+  <!-- Calendar control -->
+  <div class="calendar_div">
+    <%= render 'calendar' %>
+  </div>
+      
+  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="create-event" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+            <h4 class="modal-title">Create Google Events</h4>
+        </div>
+        <div class="modal-body">               
+          <%= form_tag events_path, :method => "post" do %>
+            <%= label_tag :List_Of_Calendar %> 
+                <%= select_tag 'calendar_id', options_for_select(@ids) , :class =>"form-control bound-s" %>
+              
+ 
+                <%= label_tag :summary %> 
+              
+                <%= text_field_tag :summary , :class => "form-control" %>
+            
+
+                <%= label_tag :location %>
+    
+                  <%= text_field_tag :location , :class => "form-control"  %>
+               
+
+                <%= label_tag :sdate  %>       
+                <%= text_field_tag :sdate ,Date.today, :class => "col-md-4 input sdp" %>
+         
+                <%= label_tag :edate  %>       
+                <%= text_field_tag :edate ,Date.today, :class => "col-md-4 input sdp" %>
+      
+              <center><%= submit_tag "Create Event", class: "btn btn-large btn-info" %></center>
+            <% end %>
+           
+          </div>
+        </div>
+    </div>
+</div>
+<!--Calendar control finish -->

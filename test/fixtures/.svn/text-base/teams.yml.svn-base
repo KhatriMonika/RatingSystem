@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: teams
+#
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  project_manager_id :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  project_manager_id: 1
+
+two:
+  name: MyString
+  project_manager_id: 1

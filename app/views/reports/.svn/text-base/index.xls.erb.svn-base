@@ -1,0 +1,114 @@
+<% if @rating_details.present? %>
+  <% if (@selected_employees.length == 1) %>
+    <% if @selected_factors.present? %>
+      <table  class="display table table-bordered table-striped example">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <% @selected_factors.each do |factor| %>
+              <th><%= factor.name %></th>
+            <% end %>
+            <th>Total Rating</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% $i = 1 %>
+          <% @rating_details.each do |key,value| %>
+            <tr class="<%= (($i%2) == 1) ? "gradeX odd" : "gradeX even"%>">
+              <th><%= key %></th>
+              <% values_of_factors = value.group_by(&:factor_id) %>
+              <% @selected_factors.each do |factor| %>
+                <td><%= values_of_factors[factor.id].present? ? values_of_factors[factor.id].last.rating_value : "NA" %></td>
+              <% end %>
+              <td><%= value.last.total_rating %></td>
+              <td><%= value.last.remark %></td>
+            </tr>
+            <% $i = $i + 1 %>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <table  class="display table table-bordered table-striped example">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Total Rating</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% $i = 1 %>
+          <% @rating_details.each do |date, value| %>
+            <tr class="<%= (($i%2) == 1) ? "gradeX odd" : "gradeX even"%>">
+              <th><%= date %></th>
+              <td><%= value.last.total_rating %></td>
+              <td><%= value.last.remark %></td>
+            </tr>
+            <% $i = $i + 1 %>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  <% else %>
+    <% if @selected_factors.present? %>
+      <table  class="display table table-bordered table-striped example">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <% @selected_factors.each do |factor| %>
+              <th><%= factor.name %></th>
+            <% end %>
+            <th>Total Rating</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @rating_details.each do |key,value| %>
+            <% $i = 1 %>
+            <% value.group_by(&:emp_name).each do |name,values_for_one_employee| %>
+              <tr class="<%= (($i%2) == 1) ? "gradeX odd" : "gradeX even"%>">
+                <% if value.group_by(&:emp_name).keys.first == name %>
+                  <th rowspan="<%=value.group_by(&:emp_name).keys.length%>"  align="center" valign="middle"><%= key %></th>
+                <% end %>
+                <th><%= name %></th>
+                <% values_of_factors = values_for_one_employee.group_by(&:factor_id) %>
+                <% @selected_factors.each do |factor| %>
+                  <td><%= values_of_factors[factor.id].present? ? values_of_factors[factor.id].last.rating_value : "NA" %></td>
+                <% end %>
+                <td><%= values_for_one_employee.last.total_rating %></td>
+                <td><%= values_for_one_employee.last.remark %></td>   
+              </tr>
+              <% $i = $i + 1 %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <% @rating_details.each do |date, values| %>
+        <h3>Date : <%= date %></h3>
+        <table  class="display table table-bordered table-striped example">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Total Rating</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% $i = 1 %>
+            <% values.each do |value| %>
+              <tr class="<%= (($i%2) == 1) ? "gradeX odd" : "gradeX even"%>">
+                <td><%= value.emp_name %></td>
+                <td><%= value.total_rating %></td>
+                <td><%= value.remark %></td>    
+              </tr>
+              <% $i = $i + 1 %>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

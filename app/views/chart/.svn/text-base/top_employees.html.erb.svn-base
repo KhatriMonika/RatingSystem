@@ -1,0 +1,69 @@
+<% provide(:title, 'Top Employee Chart') %>
+<%= content_for :charts do %>
+<% if @employees.present?%>
+<div id="container" >
+<script type="text/javascript">
+$(function () 
+{
+
+    Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+        return {
+            radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+            stops: [
+                [0, color],
+                [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+            ]
+        };
+    });
+  $('#container').highcharts(
+  {
+    chart: 
+    {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false
+    },
+    title: 
+    {
+      text: 'Top Employees'
+    },
+    tooltip: 
+    {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },        
+    plotOptions: 
+    {
+      pie: 
+      {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: 
+        {
+          enabled: true,
+          color: '#000000',
+          connectorColor: '#000000',
+          format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+        },
+        showInLegend: true
+      }
+    },
+    series: 
+    [{
+      type: 'pie',
+      name: 'Total',
+      data: 
+      [
+        <% @employees.each do |key,value| %>
+          [ '<%= key %>' , <%= value %> ],
+        <% end %>
+      ]
+    }]
+  });
+});
+  </script>    
+</div>
+<% else %>
+  <%= gflash :js => true %>
+  <% flash.now[:error] = ".. No Ratings Available .." %>
+<% end %>
+<% end %>

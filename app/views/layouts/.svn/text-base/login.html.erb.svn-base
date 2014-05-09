@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<link href="/assets/favicon.ico" rel="shortcut icon" />
+	<title>AccuRate | Login Page</title>
+	<head>
+		<%= stylesheet_link_tag "login", media: "all", "data-turbolinks-track" => true %>
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">google.load('jquery', '1.5');</script>
+		<%= csrf_meta_tags %>
+		<noscript>
+    	<meta http-equiv="refresh" content="2;url=<%= DOMAIN_CONFIG %>/nojswarning.html">
+		</noscript>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="content">
+				<div id="error">
+          <%= gflash %>          
+        </div>
+				<%= yield %>
+				<%= javascript_include_tag "login", "data-turbolinks-track" => true %>
+			</div>
+		</div>
+	</body>
+</html>

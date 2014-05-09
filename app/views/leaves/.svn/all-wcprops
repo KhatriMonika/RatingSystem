@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/Ratingsystem/!svn/ver/562/ROR/app/views/leaves
+END
+_form_sanction.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/Ratingsystem/!svn/ver/560/ROR/app/views/leaves/_form_sanction.html.erb
+END
+new.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/Ratingsystem/!svn/ver/509/ROR/app/views/leaves/new.js.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/Ratingsystem/!svn/ver/560/ROR/app/views/leaves/_form.html.erb
+END
+index.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/Ratingsystem/!svn/ver/498/ROR/app/views/leaves/index.json.jbuilder
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/Ratingsystem/!svn/ver/509/ROR/app/views/leaves/edit.html.erb
+END
+_leave_options.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/Ratingsystem/!svn/ver/509/ROR/app/views/leaves/_leave_options.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/Ratingsystem/!svn/ver/535/ROR/app/views/leaves/index.html.erb
+END
+_list_leaves.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/Ratingsystem/!svn/ver/561/ROR/app/views/leaves/_list_leaves.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/Ratingsystem/!svn/ver/509/ROR/app/views/leaves/new.html.erb
+END
+_show_leave.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/Ratingsystem/!svn/ver/562/ROR/app/views/leaves/_show_leave.html.erb
+END
+edit.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/Ratingsystem/!svn/ver/510/ROR/app/views/leaves/edit.js.erb
+END
+show.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/Ratingsystem/!svn/ver/498/ROR/app/views/leaves/show.json.jbuilder
+END

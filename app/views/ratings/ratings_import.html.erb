@@ -1,0 +1,34 @@
+<div class="well">
+  <div>
+    <section class="panel panel-default">
+      <div class="panel-heading ">
+        <h3> <i class="fa fa-upload"></i>&nbsp;Import Ratings </h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-horizontal tasi-form col-md-12" id="test" >
+          <%= form_tag import_ratings_path, multipart: true do %>
+            <%= file_field_tag :file %>
+            <%= submit_tag "Import", :class => "btn btn-info" %>
+            <div class="pull-right">
+              <label class="control-label">Please check the file Format</label>
+              <%= link_to "/sample.xlsx", :class => "btn btn-danger" do %>
+                <i class="fa fa-download"></i>&nbsp;Sample file
+              <% end %>
+            </div>
+          <% end %> 
+          <hr>
+          <div class="alert alert-info">
+          <label class="label label-danger"> Note </label><hr>
+            <ul>
+              <li><strong>Please note the Headers must contain Date and Remarks as header</strong></li>
+              <li><strong>For CSV files the file name must be the name of the employee (Case sensitive)</strong></li><li><strong>File can contain multiple sheets each for the employee</strong></li>
+            </ul>
+          </div>
+            <center><%= image_tag 'import_sample1.png', :size => '700x800' %></center><br>
+          
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+

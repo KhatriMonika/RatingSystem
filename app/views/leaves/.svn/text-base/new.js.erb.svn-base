@@ -1,0 +1,1 @@
+$("#leave_options").html("<%= j(render :partial => 'leave_options', locals: {startDate: @startDate,endDate: @endDate}) %>");

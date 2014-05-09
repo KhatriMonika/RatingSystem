@@ -1,0 +1,212 @@
+<!-- Ratings show Starts -->
+  <a name='ViewRating'/>
+    <div class="panel panel-default ">
+    <div class="panel-heading"><h3>View Rating of Employee</h3></div>
+    <div class="panel-body">  
+        API URL: <br />
+        <span id="link_ViewRating"><%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path(:employee_id) %></span><br/>
+        Method: <span id="method_ViewRating">GET</span><br />
+            <form class="form_ViewRating"><br />
+            Parameters:<br />
+              <table width='100%' cellpadding="4" cellspacing="0" border='1' bordercolor='#808080'>         
+                <thead>
+                <tr bgcolor="#eeeeee"><td> Field name </td><td> Description </td><td>Example</td>
+                    <td>Req</td></tr>
+                </thead>
+                <tbody> 
+                    <tr>
+                    <td width=140>id</td>
+                    <td> The id of the Employee </td>
+                    <td width='210'> <input id='input_ViewRating_empid' class="form-control" name="empid" class="input_ViewRating" size='40' onkeyup='change_ViewRating();' value=''> </td>
+                    <td width='30'> * </td>
+                    </tr>
+                    <tr>
+                    <td width=140>auth_token</td>
+                    <td> The auth_token of the login session of the  user </td>
+                    <td width='210'> <input id='input_ViewRating_token' class="form-control" name="token" class="input_ViewRating" size='40' onkeyup='change_ViewRating();' value=''> </td>
+                    <td width='30'> * </td>
+                    </tr>
+              </tbody>
+            </table>
+        </form><br/><br/>
+        Example call <br/>
+        <textarea id='example_ViewRating'  class="form-control"  style='font-family: Courier New' rows=4 cols=90><%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path(:id) %>?auth_token=&</textarea>
+        <br/>
+        <input type='button' id='button_ViewRating' class="btn" onClick='example("ViewRating");' value='Execute'> <br/>
+        <br/>
+        <div id='raw_ViewRating' style='font-family: courier new; font-size: 10pt;'>
+        </div>
+        <br/>
+        <div id='output_ViewRating' style='font-family: courier new; font-size: 10pt;'>
+        </div>
+        <br />
+        <pre>var apiCall = "<?=Yii::app()->createUrl('<%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path %>');?>";
+    apiCall = apiCall  + escape(valempid) + '?&auth_token=' + escape(valtoken);
+    $.getJSON(apiCall, function(r){
+    });
+            </pre>    
+            <a href='#top'>go to top</a>
+        </div>
+    </div><br />
+  <script type="text/javascript">
+      function change_ViewRating()
+      {
+          var link = '<%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path %>';
+                          link += escape($("#input_ViewRating_empid").val()) + "?&";
+                          link += "auth_token=" + escape($("#input_ViewRating_token").val()) + "&";
+                          $("#example_ViewRating").val(link);
+      }
+  </script>
+<!--View Rating Ends-->
+
+
+<!-- Ratings index Starts -->
+  <a name='RatingIndex'/>
+    <div class="panel panel-default ">
+    <div class="panel-heading"><h3>Ratings of all Employees under a Project Manager</h3></div>
+    <div class="panel-body">  
+        API URL: <br />
+        <span id="link_RatingIndex"><%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path %></span><br/>
+        Method: <span id="method_RatingIndex">GET</span><br />
+            <form class="form_RatingIndex"><br />
+            Parameters:<br />
+              <table width='100%' cellpadding="4" cellspacing="0" border='1' bordercolor='#808080'>         
+                <thead>
+                <tr bgcolor="#eeeeee"><td> Field name </td><td> Description </td><td>Example</td>
+                    <td>Req</td></tr>
+                </thead>
+                <tbody> 
+                    <tr>
+                        <td width=140>auth_token</td>
+                        <td> The auth_token of the login session of the  Project Manager</td>
+                        <td width='210'> <input id='input_RatingIndex_token' class="form-control" name="token" class="input_RatingIndex" size='40' onkeyup='change_RatingIndex();' value=''> </td>
+                        <td width='30'> * </td>
+                    </tr>
+              </tbody>
+            </table>
+        </form><br/><br/>
+        Example call <br/>
+        <textarea id='example_RatingIndex'  class="form-control"  style='font-family: Courier New' rows=4 cols=90><%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path %>?auth_token=&</textarea>
+        <br/>
+        <input type='button' id='button_RatingIndex' class="btn" onClick='example("RatingIndex");' value='Execute'> <br/>
+        <br/>
+        <div id='raw_RatingIndex' style='font-family: courier new; font-size: 10pt;'>
+        </div>
+        <br/>
+        <div id='output_RatingIndex' style='font-family: courier new; font-size: 10pt;'>
+        </div>
+        <br />
+        <pre>var apiCall = "<?=Yii::app()->createUrl('<%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path %>');?>";
+    apiCall = apiCall  + '?&auth_token=' + escape(valtoken);
+    $.getJSON(apiCall, function(r){
+    });
+            </pre>    
+            <a href='#top'>go to top</a>
+        </div>
+    </div><br />
+  <script type="text/javascript">
+      function change_RatingIndex()
+      {
+          var link = '<%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path %>?';
+                         link += "auth_token=" + escape($("#input_RatingIndex_token").val()) + "&";
+                         $("#example_RatingIndex").val(link);
+      }
+  </script>
+<!--View Ratings of all Employees Under Project Manager Ends-->
+
+<!-- Edit Rating -->
+
+  <a name='EditRating'  />
+	<div class="panel panel-default ">
+    <div class="panel-heading"><h3>Edit Rating of Employee</h3></div>
+    <div class="panel-body">  
+	    
+	    API URL: <br />
+    <span id="link_EditRating"><%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path %>/#{employee_id}</span>
+
+    <br />
+    Method: <span id="method_EditRating">PUT</span>
+    <br />
+		<form class="form_EditRating"> <br/>
+    Parameters:
+    <br/><br>
+	    <hint class="label label-danger">Note</hint><hr><pre>
+            	    {
+                        "Ratings":[
+                            {
+                                "Rating_Date":"2014-02-04",
+                                "Rating":[
+                                    {
+                                    "oldRating":0,
+                                    "Factor_id":2,
+                                    "Factor_name":"Time Doctor",
+                                    "rating":-1
+                                    }
+                                ]
+                            }
+                                ]
+                    }
+        </pre><hr>
+	    <table width='100%' cellpadding="4" cellspacing="0" border='1' bordercolor='#808080'> 	    
+	    <thead>
+        <tr bgcolor="#eeeeee"><td> Field name </td><td> Description </td><td>Example</td>
+            <td>Req</td></tr>
+        </thead>
+	    <tbody>	
+        <tr>
+        <td width=140> ID</td>
+        <td> The Employee's id </td>
+        <td width='210'> <input id='input_EditRating_id' name="id" class="input_EditRating" size='40' onkeyup='change_EditRating();' value=''> </td>
+        <td width='30'> * </td>
+    </tr>
+    
+        <tr>
+        <td width=140> auth_token</td>
+        <td> The auth token of the Project Manager given during loggin session</td>
+        <td width='210'> <input id='input_EditRating_auth_token' name="auth_token" class="input_EditRating" size='40' onkeyup='change_EditRating();' value=''> </td>
+        <td width='30'> * </td>
+    <tr>
+        <td width=140> list </td>
+        <td> Rating details to be updated in json format </td>
+        <td width='210'> <textarea id='input_EditRating_list' name="list" class="input_EditRating" size='40' onkeyup='change_EditRating();' value='' rows=4 cols=40></textarea>
+         </td>
+        <td width='30'> * </td>
+    </tr>
+    </tr>
+  </tbody>
+        </table>
+        </form>
+    <br />
+        <br />
+    Example call <br/>
+    <textarea id='example_EditRating' style='font-family: Courier New' rows=4 cols=90><%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path %></textarea>
+    <br/><br/>
+    <input type='button' id='button_EditRating' class="btn" onClick='example("EditRating");' value='Execute'> <br/>
+    <br/>
+    <div id='raw_EditRating' style='font-family: courier new; font-size: 10pt;'>
+    </div>
+    <br/>
+    <div id='output_EditRating' style='font-family: courier new; font-size: 10pt;'>
+    </div>
+    <br />
+    <pre>var apiCall = "<?=Yii::app()->createUrl('<%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path%>/');?>";
+	    apiCall = apiCall + '&id=' + escape(valid);
+	    apiCall = apiCall + '&auth_token=' + escape(valauth_token);
+			apiCall = apiCall + '&list=' + escape(vallist);
+			$.getJSON(apiCall, function(r){
+		});
+
+</pre>    <a href='#top'>go to top</a>
+        </div>
+    </div>
+    <br />
+    <script type="text/javascript">
+      function change_EditRating()
+      {
+          var link = '<%= "#{DOMAIN_CONFIG}"+api_v1_ratings_path %>/';
+                          link += escape($("#input_EditRating_id").val()) + "?&";
+                          link += "auth_token=" + escape($("#input_EditRating_auth_token").val()) + "&";
+                          link += "list=" + escape($("#input_EditRating_list").val()) + "&";
+                          $("#example_EditRating").val(link);
+      }
+  </script>

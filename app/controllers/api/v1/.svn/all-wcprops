@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/Ratingsystem/!svn/ver/583/ROR/app/controllers/api/v1
+END
+charts_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/557/ROR/app/controllers/api/v1/charts_controller.rb
+END
+sessions_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/Ratingsystem/!svn/ver/544/ROR/app/controllers/api/v1/sessions_controller.rb
+END
+team_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/Ratingsystem/!svn/ver/583/ROR/app/controllers/api/v1/team_controller.rb
+END
+ratings_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/Ratingsystem/!svn/ver/551/ROR/app/controllers/api/v1/ratings_controller.rb
+END
+base_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/Ratingsystem/!svn/ver/555/ROR/app/controllers/api/v1/base_controller.rb
+END
+factor_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/570/ROR/app/controllers/api/v1/factor_controller.rb
+END
+employee_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/Ratingsystem/!svn/ver/570/ROR/app/controllers/api/v1/employee_controller.rb
+END
+leaves_controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/583/ROR/app/controllers/api/v1/leaves_controller.rb
+END

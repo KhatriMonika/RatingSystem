@@ -1,0 +1,2 @@
+$("#employees_performance").html('<%= escape_javascript(render(:partial => "/dashboard/top_employees"))%>');
+$("#employee_rank_table").html('<%= escape_javascript(render(:partial => "top_employees_data_table"))%>');

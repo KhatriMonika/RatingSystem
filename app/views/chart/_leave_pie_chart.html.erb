@@ -1,0 +1,99 @@
+<% if @details.present? %>
+<div id="leave_chart" class="col-lg-12">
+<hr>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto" class="well"></div>
+<script>
+    var seriesdata = []
+    <% if current_user.employee? %>
+        <% value = @details.values.first %>
+        <% @reason_category.each do |category| %>
+            var days = 0
+            <% v = value.group_by(&:category) %>
+            <% if v[category.name].present? %>
+                <% v[category.name].each do |cat_value| %>
+                    days = days + <%= cat_value.options.split(",").length %>
+                <% end %>
+            <% end %>
+            seriesdata.push({name: "<%=category.name%>", y: days})
+        <% end %>
+    <% else %>
+        var drilldownseriesdata = []
+        <% @details.each do |name, value| %>
+            var data = []
+            var total = 0
+            <% if value.present? %>
+                <% @reason_category.each do |category| %>
+                    var sub_total = 0
+                    <% v = value.group_by(&:category) %>
+                    <% if v[category.name].present? %>
+                        var sub_total = 0
+                        <% v[category.name].each do |cat_value| %>
+                            sub_total = sub_total + <%= cat_value.options.split(",").length %>
+                            total = total + <%= cat_value.options.split(",").length %>
+                        <% end %>
+                    <% end %>
+                    data.push({name: "<%=category.name%>", y: sub_total})
+                <% end %>
+                seriesdata.push({name: "<%= name %>", y: total,drilldown: "<%= name.gsub(' ','_') %>"});
+            drilldownseriesdata.push({id: "<%= name.gsub(' ','_') %>",data: data});
+            <% else %>
+                seriesdata.push({name: "<%= name %>", y: total);
+            <% end %>
+        <% end %>
+    <% end %>
+    $(function () {
+
+        $('#container').highcharts({
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Leave Analysis for <%= @startDate %> to <%= @endDate %>'
+            },
+            subtitle: {
+                text: 'Click the part of chart to view categories.'
+            },
+            xAxis: {
+                type: 'category'
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Number of days'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                series: {
+                    borderWidth: 0,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.name} : {point.y}'
+                    }
+                }
+            },
+
+            tooltip: {
+                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b><br/>'
+            }, 
+
+            series: [{
+                name: 'Employee',
+                colorByPoint: true,
+                data: seriesdata
+            }]
+            <% if !(current_user.employee?) %>,
+
+            drilldown: {
+                name: 'Category',
+                series: drilldownseriesdata
+            }
+            <% end %>
+        })
+    });
+</script>
+</div>
+<% end %>

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/Ratingsystem/!svn/ver/564/ROR/app/views/api/v1/team
+END
+project_manager_for_new_team.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/Ratingsystem/!svn/ver/564/ROR/app/views/api/v1/team/project_manager_for_new_team.json.jbuilder
+END
+index.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/Ratingsystem/!svn/ver/564/ROR/app/views/api/v1/team/index.json.jbuilder
+END

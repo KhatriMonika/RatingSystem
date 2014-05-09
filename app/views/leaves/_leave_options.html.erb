@@ -1,0 +1,35 @@
+<div id="leave_options">
+  <% startDate = Date.parse(startDate) %>
+  <% endDate = Date.parse(endDate) %>
+  <% options = Array.new %>
+  <% i = 0 %>
+  <% if @leave.leave_options.present? %>
+    <% options = @leave.leave_options.split(",") %>
+  <% end %>
+  <% while endDate >=  startDate do %>
+    <% if !(startDate.sunday?) %>
+      <div class="row">
+        <div class="control-group">
+          <label class="control-label col-md-2"><%= startDate %></label>
+          <div class="controls">
+            <div class="btn-group" data-toggle="buttons">
+              <% Leave::OPTIONS.each do |option| %>
+              <% if options[i].present? %>
+                <label class="btn btn-default <%= Leave::OPTIONS.index(option) == options[i].to_i ? "active" : "" %>">
+                  <%= radio_button_tag "#{startDate}",  Leave::OPTIONS.index(option), Leave::OPTIONS.index(option) == options[i].to_i ? true : false %> <%= option %>
+                </label>
+              <% else %>
+                <label class="btn btn-default <%= option == "Full Day" ? "active" : "" %>">
+                  <%= radio_button_tag "#{startDate}",  Leave::OPTIONS.index(option), option == "Full Day" ? true : false %> <%= option %>
+                </label>
+              <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% startDate = startDate + 1 %>
+    <% i = i + 1 %>
+  <% end %>
+</div>

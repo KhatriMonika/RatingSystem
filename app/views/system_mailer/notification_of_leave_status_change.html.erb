@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @leave.employee.name%>'s leave is <%= @leave.status_name%></h1>
+    <p>
+      your email is: <%= @user.email %>.<br>
+    </p>
+    <p>
+      <%= @leave.employee.name%>'s leave is <%= @leave.status_name%> due to <%= @leave.reason_of_leave %> reason on date <%= @leave.leave_required_from %> to <%= @leave.leave_required_to %>,
+      <br>Thank you and have a great day!
+    </p>
+  </body>
+</html>

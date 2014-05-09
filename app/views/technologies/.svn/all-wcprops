@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/Ratingsystem/!svn/ver/498/ROR/app/views/technologies
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/Ratingsystem/!svn/ver/498/ROR/app/views/technologies/_form.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/Ratingsystem/!svn/ver/498/ROR/app/views/technologies/new.html.erb
+END
+create.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/Ratingsystem/!svn/ver/498/ROR/app/views/technologies/create.js.erb
+END
+_list_technologies.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/Ratingsystem/!svn/ver/498/ROR/app/views/technologies/_list_technologies.html.erb
+END
+edit.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/Ratingsystem/!svn/ver/498/ROR/app/views/technologies/edit.js.erb
+END

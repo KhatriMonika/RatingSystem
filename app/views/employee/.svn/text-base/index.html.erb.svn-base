@@ -1,0 +1,57 @@
+<% provide(:title, 'Employee List') %>
+<html lang="en" class=" js no-touch" >  
+  <section class="panel">
+    <div class="panel-body">
+      <span class="myselect1">
+        <%= select_tag :technology_id, options_from_collection_for_select( Technology.all , "id", "name"), :prompt => "Technology wise ",:class => "btn btn-info dropdown-toggle" %>
+      </span>
+      <span class="myselect2">
+        <%= select_tag :team_id, options_from_collection_for_select( Team.all , "id", "name"), :prompt => "Team wise ",:class => "btn  dropdown-toggle" %>
+      </span>
+      <span class="myselect3">
+        <%= select_tag :role_id, options_for_select([ ["Admin",0],["Project Manager",1], ["Employee",2]]), :prompt => "Role wise ",:class => "btn btn-primary dropdown-toggle" %>
+      </span>
+      <a class="btn btn-success" href="/employee/">All</a>
+      <%= link_to "Deactive", {controller:"employee", action:"index", active: 'false'}, class: "btn btn-danger dropdown-toggle" %>   
+    </div>
+  </section>
+  <div id="list_employee" > 
+    <%= render 'list_employee_index' %>
+  </div>
+</html>
+<script type="text/javascript">
+$("#technology_id").change(function() {
+  var id = $(this).val();
+
+  $.ajax({
+    dataType: 'script',
+    url: "/employee/",
+    type: "GET",
+    data: {"technology_id": id},
+    
+  });
+});
+$("#team_id").change(function() {
+  var id = $(this).val();
+
+  $.ajax({
+    dataType: 'script',
+    url: "/employee/",
+    type: "GET",
+    data: {"team_id": id},
+    
+  });
+});
+$("#role_id").change(function() {
+  var id = $(this).val();
+
+  $.ajax({
+    dataType: 'script',
+    url: "/employee/",
+    type: "GET",
+    data: {"role_id": id},
+    
+  });
+});
+
+</script>

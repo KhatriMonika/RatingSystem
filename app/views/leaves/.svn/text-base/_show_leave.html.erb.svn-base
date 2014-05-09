@@ -1,0 +1,81 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="modal fade" id="show<%= l.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Leave Application From <%= l.employee.name %></h4><br><br>
+          </div>
+          <div class="modal-body bio-graph-info font">
+            <div class="row">
+              <div class="bio-row"><p><span>Applied Date </span>: <%= l.date_of_application %></p>
+            </div>
+            <% if l.date_of_approval.present? %>
+              <div class="bio-row">
+                <p><span>Approval Date </span>: <%= l.date_of_approval %>
+                </p>
+              </div>
+            <% end %>
+            <div class="bio-row">
+              <p><span>Leave Days </span>: <%= l.leave_required_from %> to <%= l.leave_required_to %>
+              </p>
+            </div>
+            <% if l.leave_options.split(",").uniq.length == 1 %>
+              <div class="bio-row">
+                  <p><span>All Days</span>: <%= Leave::OPTIONS[l.leave_options.split(",").first.to_i] %>
+                  </p>
+                </div>
+            <% else %>
+              <% l.option.each do |key,value| %>
+                <div class="bio-row">
+                  <p><span><%= key.to_s %></span>: <%= Leave::OPTIONS[value.to_i] %>
+                  </p>
+                </div>
+              <% end %>
+            <% end %>
+            
+            <div class="bio-row">
+              <p><span>Informed to Client </span>: <label class="badge badge-sm label-<%= l.informed_to_client ? 'success' : 'danger'%>"><%= l.informed_to_client ? "Yes" : "No" %>
+              </p>
+            </div>
+
+            <div class="bio-row break-me">
+              <p><span>Reason </span>: <label class="badge" style="background-color: <%= l.leave_reason_category.colour %>;"><%= l.leave_reason_category.name %></label> - <%= l.reason_of_leave %>
+              </p>
+            </div>
+
+            <% if l.note.present? %>
+              <div class="bio-row">
+                <p><span>Note </span>: <%= l.note %>
+                </p>
+              </div>
+            <% end %>
+
+            <div class="bio-row">
+              <p><span>Status </span>: <label class="badge badge-sm label-<%= @status_classes[l.status]%>"><%= l.status_name %></label>
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <% if !(l.canceled?) %>
+                <% if l.employee_id == current_user.id %>
+                  <% if !(l.not_sanctioned?) && !(l.past_leave?) %>
+                  <%= link_to 'Cancel', l, method: :delete, data: { confirm: 'Are you sure, to cancel leave application?' } , :class => "btn btn-danger" %>
+                  <% end %>
+                <% else %>
+                  <% if !(l.sanctioned?) && !(l.past_leave?) %>
+                    <%= link_to 'Sanction', leafe_path(l,:status => "Sanctioned"), method: :put, data: { confirm: 'Are you sure, to sanction leave application?' } , :class => "btn btn-success" %>
+                  <% end %>
+                  <% if !(l.not_sanctioned?) && !(l.past_leave?) %>
+                    <%= link_to 'Not Sanction', leafe_path(l,:status => "Not Sanctioned"), method: :put, data: { confirm: 'Are you sure, to not sanction leave application?' } , :class => "btn btn-danger" %>
+                  <% end %>
+                <% end %>
+            <% end %>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+  </div><!-- /.cpl-lg-12 -->
+</div><!-- /.row -->

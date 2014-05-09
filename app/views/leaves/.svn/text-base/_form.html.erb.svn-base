@@ -1,0 +1,58 @@
+<div class="form-horizontal tasi-form">
+  <%= simple_form_for @leave , :wrapper => false ,:html => { :class => 'form-horizontal'} do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :date_of_application, as: :hidden, :input_html => { value: Date.today } %>
+      <%= hidden_field_tag "id", @leave.date_of_application.present? ? @leave.id : "new", :id => "leave_id" %>
+      <div class="row">
+        <%= f.input :leave_required_from, as: :string, :input_html => { :class => "col-md-4 input single_dp_leave", value: @leave.leave_required_from.present? ? @leave.leave_required_from : ((Date.today+1).sunday? ? Date.today+2 : Date.today+1), :id => "leave_required_from" },:error_html => { :class => 'col-md-6'}, :label_html => { :class => 'col-md-2'} %>
+      </div>
+
+      <div class="row">
+        <%= f.input :leave_required_to, as: :string, :input_html => { :class => "col-md-4 input single_dp_leave", value: @leave.leave_required_to.present? ? @leave.leave_required_to : ((Date.today+1).sunday? ? Date.today+2 : Date.today+1), :id => "leave_required_to" },:error_html => { :class => 'col-md-6'}, :label_html => { :class => 'col-md-2'} %>
+      </div>
+
+      <%= render :partial => 'leave_options', locals: { startDate: @startDate,endDate: @endDate } %>
+
+      <div class="row">
+        <div class="control-group">
+          <label class="control-label col-md-2">Informed to client</label>
+          <div class="controls">
+            <div class="switch" data-on-label="Yes" data-off-label="No">
+              <input name="leave[informed_to_client]" id="leave_informed_to_client" type="checkbox" <%= 'checked' if @leave.informed_to_client.present? %> class="col-md-4"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <%= f.input :leave_reason_category_id,:collection => LeaveReasonCategory.where(active: true).collect {|category| [category.name, category.id]},:include_blank => false, :input_html => { :class => "col-md-4 input" },:error_html => { :class => 'col-md-6'}, :label_html => { :class => 'col-md-2'} %>
+      </div>
+
+      <div class="row">
+        <%= f.input :reason_of_leave,as: :text, :input_html => { :class => "col-md-4 input-area", :cols => 5, :rows => 10  },:error_html => { :class => 'col-md-6'}, :label_html => { :class => 'col-md-2'} %>
+      </div>
+
+      <div class="row">
+        <%= f.input :status, :input_html => { :class => "col-md-4" },:error_html => { :class => 'col-md-6'}, :label_html => { :class => 'col-md-2'} do %>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default">
+              <%= f.radio_button :status,  Leave::STATUS.index("Draft"), :checked => false %>
+              Draft
+            </label>
+            <label class="btn btn-default active">
+              <%= f.radio_button :status,  Leave::STATUS.index("Not Reviewed"), :checked => false %>
+              Apply
+            </label>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, :class => "btn btn-success" %>
+        <%= link_to "Cancel", leaves_path, :class => "btn btn-default" %>
+      </div>
+  <% end %>
+</div>
+<script>
+
+</script>

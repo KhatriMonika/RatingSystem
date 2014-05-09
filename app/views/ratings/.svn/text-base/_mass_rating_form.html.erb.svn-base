@@ -1,0 +1,56 @@
+<% @members = @new_members %>
+<% if @members.present?  %>
+	<section class="panel panel-default">
+		<div class="panel panel-default">
+  		<div class="panel-heading">  			
+				<%= form_tag '/ratings/create_mass_rate' do %>					
+					<table class="pull-right">
+						<tr>
+							<td><h4><%= label_tag :Date %> </h4></td>
+							<td><%= text_field_tag 'date[rating_date]',"",:class => "form-control dp", :value => passed_date, :id => "new_date_value" %></td>
+						</tr>
+					</table>
+					<span><h3><i class="fa fa-star"></i> </span>Rate Members</h3>
+			</div>
+  <div class="panel-body">		
+  	<div class="form-horizontal tasi-form col-md-12">
+			<div class="row-fluid">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th><h4>Name</h4></th>
+								<% @factor.each do |factor| %>
+									<th><h4><%= factor.name %></h4></th>
+								<% end %>
+								<th><h4>Remarks</h4></th>
+							</tr>
+						</thead>
+						<tbody>
+						<% @members.each do |member| %>
+							<tr>
+								<td><h4><%= member.name %></h4></td>
+								<% Factor.available.each do |factor| %>
+								<td align="center">											
+										<%= select_tag "rating[#{member.id}][rating_details_attributes[rating_values][#{factor.id}]]", !member.ratings.present? ? options_for_select(factor.active_guidlines.pluck(:description,:value)) : options_for_select(factor.active_guidlines.pluck(:description,:value), (Rating.with_rating_details((member.ratings.maximum(:rating_date) - 10).to_s,(Date.today).to_s,member.id,factor.id).pluck(:rating_value).mode)), {:class => "col-md-4 input"} %>
+								</td>
+								<% end %> 
+								<td>
+									<%= hidden_field_tag "rating[#{member.id}][project_manager]","",:value => current_user.id %>
+									<%= text_area_tag "rating[#{member.id}][remarks]","",:class => "form-control remark-input", :value => "",:cols => 100,:rows => 1 %>
+								</td>
+							</tr>
+						<% end %>	      		     
+						</tbody>
+					</table>		
+				</div>
+			</div>					
+			<div class="col-md-5">
+				<hr>
+				<center><%= submit_tag "Submit", :id => "button_submit",:class => "btn btn-info" %></center>
+			</div>
+				<% end %>
+		</div>			
+	</div>
+</section>
+<% end %>

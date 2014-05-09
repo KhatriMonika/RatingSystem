@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: ratings
+#
+#  id                 :integer          not null, primary key
+#  rating_date        :date
+#  employee_id        :integer
+#  remarks            :text
+#  created_at         :datetime
+#  updated_at         :datetime
+#  total_rating       :float            default(0.0)
+#  project_manager_id :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rating_date: 2014-01-22
+  employee_id: 1
+  remarks: MyText
+
+two:
+  rating_date: 2014-01-22
+  employee_id: 1
+  remarks: MyText

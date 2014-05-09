@@ -1,0 +1,66 @@
+<div class="form-group form_control">
+  <div class="panel">
+    <div class="panel-heading"><span>
+      <h3><i class="fa fa-list-ul"></i> </span> List Factor</h3> 
+    </div>
+    <div class="panel-body">               
+      <table class="table table-striped table-hover table-bordered ">
+        <th>Show/hide</th><th> Factor Names</th><th>State</th><th colspan="2">Action</th>
+        <% Factor.all.each do |factor| %>
+          <tr>
+            <td class="col-sm-1 control-label testing" align="center" name="guid_<%= factor.id %>"><button class="btn btn-xs btn-info" onclick="$('.target_<%= factor.id %>').toggle();">&nbsp;<i class="fa fa-info">&nbsp;</i></button></td>
+            <td class="col-sm-3 control-label" align="center"><h5><%= factor.name %>   </h5></td>
+            <td  class="col-sm-1 "> 
+              <label class='<%= factor.active ? "label label-success" : "label label-danger" %>'>
+              <%= factor.state %></label> </td>
+            <td  class="col-sm-2 " colspan="2"> 
+            <%= link_to edit_factor_path(factor.slug), :class => "btn btn-xs btn-warning" do %>
+                <i class="fa fa-edit"></i>
+              <% end %>
+            <%= link_to factor_path(factor.slug), :method => :delete, :data => { :confirm => "Are you sure? the Factor would be #{factor.active ? 'Deactived' : 'Activated'}" } , :class =>factor.active ? "btn btn-xs btn-danger" : "btn btn-xs btn-success" do %>  
+              <% if factor.active %> 
+                <i class="fa fa-lock"></i>                
+              <% else %>
+                <i class="fa fa-unlock"></i>   
+              <% end %>
+            <% end %>
+            </td>            
+          </tr>          
+          <tr class="target_<%= factor.id %> load"> 
+              <th></th><th> Guidlines </th><th> Values </th><th> State </th><th colspan="2">Actions</th></tr>
+              <% factor.factor_guidlines.each do |f| %>
+                <tr class="target_<%= factor.id %> load">
+                  <td></td>
+                  <td> <%= f.description %></td>
+                  <td><%= f.value %></td>
+                  <td><label class='<%= f.active ? "label label-success" : "label label-danger" %>'>
+                      <%= f.active ? "Active" : "Deactive" %></label></td>
+                  <td colspan="2">
+                  <% if factor.active %>
+                    <%= link_to disable_guidline_factors_path(f.id), :method => :post, :data => { :confirm => "Are you sure? the Guidline would be #{f.active ? 'Deactived' : 'Activated'}" } , :class =>f.active ? "btn btn-xs btn-danger" : "btn btn-xs btn-success" do %>  
+                      <% if f.active %> 
+                        <i class="fa fa-lock"></i>                
+                      <% else %>
+                        <i class="fa fa-unlock"></i>   
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    Activate the Factor First
+                  <% end %>
+                  </td>
+                </tr>
+              <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">  
+  $('.load').toggle();
+</script>
+
+
+
+

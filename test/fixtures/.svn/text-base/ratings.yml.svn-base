@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: ratings
+#
+#  id           :integer          not null, primary key
+#  rating_date  :date
+#  employee_id  :integer
+#  remarks      :text
+#  created_at   :datetime
+#  updated_at   :datetime
+#  total_rating :float            default(0.0)
+#
+# Indexes
+#
+#  index_ratings_on_employee_id                  (employee_id)
+#  index_ratings_on_rating_date_and_employee_id  (rating_date,employee_id)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rating_date: 2014-01-22
+  employee_id: 1
+  remarks: MyText
+
+two:
+  rating_date: 2014-01-22
+  employee_id: 1
+  remarks: MyText

@@ -1,0 +1,54 @@
+<!--User Profile -->
+
+    <a name='userprofile'/>
+    <div class="panel panel-default ">
+      <div class="panel-heading"><h3>Employee Profile</h3></div>
+     	<div class="panel-body">
+		  API URL: <br />
+    	<span id="link_profile"><%= "#{DOMAIN_CONFIG}/api/v1/employee/1" %></span><br />
+    	Method: <span id="method_profile">GET</span><br />
+		<form class="form_profile"><br />
+	    Parameters:
+	    <br/>		    
+		    <table width='100%' cellpadding="4" cellspacing="0" border='1' bordercolor='#808080'> 	    
+			    <thead>
+		        <tr bgcolor="#eeeeee"><td> Field name </td><td> Description </td><td>Example</td>
+		            <td>Req</td></tr>
+		        </thead>
+			    <tbody>	
+				    <tr>
+			        <td> access_token </td>
+			        <td> the access_token of the user </td>
+			        <td width='210'> <input id='input_profile_user_id' class="form-control" name="user_id" class="input_profile" size='40' onkeyup='change_profile();' value=''> </td>
+			        <td width='30'> * </td>
+			    	</tr>
+		      </tbody>
+	      </table>
+     </form><br/><br/>
+    Example call <br/>
+    <textarea id='example_profile' class="form-control" style='font-family: Courier New' rows=4 cols=90>			<%= "#{DOMAIN_CONFIG}/api/v1/employee/:id?auth_token=" %>/
+    </textarea><br/>
+    <input type='button' id='button_profile' class="btn" onClick='example("profile");' value='Execute'> <br/>
+    <br/>
+    <div id='raw_profile' style='font-family: courier new; font-size: 10pt;'></div><br/>
+    <div id='output_profile' style='font-family: courier new; font-size: 10pt;'></div><br />
+    <pre>
+    var apiCall = "<?=Yii::app()->createUrl('<%= "#{DOMAIN_CONFIG}/api/v1/employee/1?" %>');?>";
+apiCall = apiCall + '&auth_token=' + escape(valuser_id);
+$.getJSON(apiCall, function(r){
+});
+
+		</pre>    
+		<a href='#top'>go to top</a>
+   </div>
+  </div><br/>
+  <script type="text/javascript">
+    function change_profile()
+    {
+        var link = '<%="#{DOMAIN_CONFIG}"%>/api/v1/employee/1?';
+        link += "auth_token=" + escape($("#input_profile_user_id").val()) + "&";
+        $("#example_profile").val(link);
+    }
+</script>
+
+<!--User Profile ends-->

@@ -1,0 +1,58 @@
+<!-- Factor List Starts-->
+  <a name='FactorList'/>
+	<div class="panel panel-default ">
+    <div class="panel-heading"><h3>Factor List</h3></div>
+    <div class="panel-body">  
+	    API URL: <br />
+    	<span id="link_FactorList"><%= "#{DOMAIN_CONFIG}"+api_v1_factor_index_path
+%></span><br/>
+	    Method: <span id="method_FactorList">GET</span><br />
+			<form class="form_FactorList"><br />
+		    Parameters:<br />
+			  <table width='100%' cellpadding="4" cellspacing="0" border='1' bordercolor='#808080'> 	    
+			    <thead>
+		        <tr bgcolor="#eeeeee"><td> Field name </td><td> Description </td><td>Example</td>
+		            <td>Req</td></tr>
+		        </thead>
+			    <tbody>	
+				    <tr>
+			        <td width=140>auth_token</td>
+			        <td> The auth_token of the login session of the  user </td>
+			        <td width='210'> <input id='input_FactorList_token' class="form-control" name="token" class="input_FactorList" size='40' onkeyup='change_FactorList();' value=''> </td>
+			        <td width='30'> * </td>
+			    	</tr>
+		      </tbody>
+		    </table>
+	    </form><br/><br/>
+	    Example call <br/>
+	    <textarea id='example_FactorList'  class="form-control"  style='font-family: Courier New' rows=4 cols=90><%= "#{DOMAIN_CONFIG}"+api_v1_factor_index_path
+%>?auth_token=&</textarea>
+	    <br/>
+	    <input type='button' id='button_FactorList' class="btn" onClick='example("FactorList");' value='Execute'> <br/>
+	    <br/>
+	    <div id='raw_FactorList' style='font-family: courier new; font-size: 10pt;'>
+	    </div>
+	    <br/>
+	    <div id='output_FactorList' style='font-family: courier new; font-size: 10pt;'>
+	    </div>
+	    <br />
+	    <pre>var apiCall = "<?=Yii::app()->createUrl('<%= "#{DOMAIN_CONFIG}"+api_v1_factor_index_path
+%>?');?>";
+	apiCall = apiCall + '&token=' + escape(valtoken);
+	$.getJSON(apiCall, function(r){
+	});
+			</pre>    
+			<a href='#top'>go to top</a>
+		</div>
+	</div><br />
+  <script type="text/javascript">
+      function change_FactorList()
+      {
+          var link = '<%= "#{DOMAIN_CONFIG}"+api_v1_factor_index_path
+%>?';
+                          link += "auth_token=" + escape($("#input_FactorList_token").val()) + "&";
+                          $("#example_FactorList").val(link);
+      }
+  </script>
+
+<!-- Factor List Ends-->

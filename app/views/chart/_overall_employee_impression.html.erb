@@ -1,0 +1,80 @@
+<% if @rating_details.present? %>
+<div id="container" >
+<script type="text/javascript">
+  var employees_name = [];
+  <% max_factor_value = Array.new %>
+  <% total_count = Array.new %>
+  <% i=0 %>
+  <%  @rating_details.each do |key,value|  %>
+    <% value.each do |v| %>
+      employees_name.push('<%= v.emp_name %>')
+      <% max_factor_value.push(v.factor_id) %>
+    <% end %>
+  <% end %>
+
+  <% max_factor_value = max_factor_value.uniq %>
+  <% max_factor_value.each do |v| %>
+    <% total_count.push(max_value(v) * @max_rating_count )  %>
+  <% end %>
+  $(function () 
+  {
+    $('#container').highcharts(
+    {
+      chart: 
+      {
+        height: 20 * employees_name.length,
+        type: 'bar'
+      },
+      title: 
+      {
+        text: 'Overall Performance'
+      },
+      xAxis: 
+      {
+        categories: employees_name,
+        alternateGridColor: 'rgba(225, 225, 224, .3)'
+      },
+      yAxis: 
+      {
+        min: -1,
+        title: 
+        {
+          text: 'Points'
+        }
+      },
+      legend: 
+      {
+        backgroundColor: '#FFFFFF',
+        reversed: true
+      },
+      plotOptions: 
+      {
+        series: 
+        {
+          stacking: 'normal'
+        }
+      },
+      series: 
+      [
+        <% i=0 %>
+        <% @rating_details.each do |factor_name, values| %>
+          {
+            name: '<%= factor_name %>',
+              <% tmp = []%>
+              <% values.each do |v| %>
+               <% tmp.push ((v.total_rating/total_count[i].to_f).round(2)) %>
+              <% end %>            
+            data: <%= tmp %>
+              <% i = i+1 %>
+          },
+        <% end %>
+      ]
+    });
+  });
+</script>
+</div>
+<% else %>
+ <script type="text/javascript">
+  jQuery.gritter.add({image: '/assets/error.png',title: 'Error', text: 'No Ratings Available for selected date..!'});
+ </script>
+<% end %>

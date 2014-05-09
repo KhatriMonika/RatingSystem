@@ -1,0 +1,40 @@
+<% provide(:title, 'Top Employee Performance Analysis') %>
+<div class="row well">
+<div class="form-horizontal tasi-form col-md-12">
+  <%= form_tag top_improving_degrading_employees_chart_index_path ,:method => :get , :remote => true  do %>
+    <div class="form-group">      
+    <table align="center">
+      <tr>
+        <td><h4> <strong>Select Date &nbsp;</strong></h4></td>
+        <td width="350px"><h4>
+          <%= text_field_tag '', '', placeholder: "Select the Date", class: 'reportrange form-control input-md', value: "#{@start_date} - #{@end_date}" %>
+        </h4></td>
+        <td> &nbsp;
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary btn-md">
+              <input type="radio" name="options" id="option1" value="Textual"> Textual
+            </label>
+            <label class="btn btn-primary btn-md">
+              <input type="radio" name="options" id="option2" value="Visual"> Visual
+            </label>
+            <label class="btn btn-primary btn-md">
+              <input type="radio" name="options" id="option3" value="Both"> Both
+            </label>
+          </div>
+        </td> 
+        <%= hidden_field_tag :startdate %>
+        <%= hidden_field_tag :enddate %>
+      </tr>
+    </table>
+    </div>
+  <% end %>
+  <%= content_for :charts do %>
+    <div id="employees_performance">
+      <%= render '/dashboard/top_employees' %>
+    </div>
+  <% end %>
+  <div id="employee_rank_table">
+    <%= render 'top_employees_data_table' %>
+  </div>
+</div>
+</div>

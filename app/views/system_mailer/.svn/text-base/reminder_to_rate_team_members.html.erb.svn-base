@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Hi, Greetings...!!</h3>
+    <p>
+      This is to remind you that you have not provided Rating.
+      You last provided Rating on <%= @last_rating_date %>
+    </p>    
+  </body>
+</html>

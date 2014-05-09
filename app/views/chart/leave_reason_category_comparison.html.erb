@@ -1,0 +1,22 @@
+<div class="row well">
+    <div class="form-horizontal tasi-form col-md-12">
+      <%= form_tag @leave_reason_category_comparison_index_path ,:method => :get , :remote => true  do %>
+      <%= hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token) %>
+        <div class="form-group">      
+        <table align="center">
+          <tr>
+            <td><h4> <strong>Select Date &nbsp;</strong></h4></td>
+            <td width="350px"><h4>
+              <%= text_field_tag '', '', placeholder: "Select the Date", class: 'reportrange form-control input-md', value: "#{@startDate} to #{@endDate}" %>
+            </h4></td> 
+            <%= hidden_field_tag :startdate %>
+            <%= hidden_field_tag :enddate %>
+          </tr>
+        </table>
+        </div>
+      <% end %>
+      <%= content_for :charts do %>
+        <%= render 'leave_reason_category' %>
+      <% end %>
+    </div>
+</div>

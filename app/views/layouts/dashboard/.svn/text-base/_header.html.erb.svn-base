@@ -1,0 +1,41 @@
+<title><%= full_title(yield(:title)) %></title>
+<header class="header white-bg">
+  <div class="sidebar-toggle-box">
+    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+  </div>
+<!--logo start-->
+  <a href="#" class="logo"><span><%= image_tag "login/logo-big.png", :size => "160x30" %></span>
+  </a>
+<!--logo end-->
+  <div class="top-nav ">
+    <!--search & user info start-->
+    <ul class="nav pull-right top-menu">
+     
+      <!-- user login dropdown start-->
+      <li class="dropdown">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+          <%= image_tag current_user.gravatar_url, :size => "40x40" %>
+          <span class="username"><%= current_user.name.capitalize %></span>
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu extended logout">
+          <div class="log-arrow-up"></div>
+          <li>
+              <%= link_to (employee_path(current_user.slug)) do %>
+                  <i class=" fa fa-suitcase"></i>  Profile
+              <% end %>
+          </li> 
+          <li>
+            <%= link_to (edit_employee_path(current_user.slug)) do %>
+              <i class="fa fa-cog"></i> Settings
+            <% end %>
+          </li>
+          <li><i class="fa fa-lock"></i> Lock Screen</li>
+          <li><%= link_to "Log Out", logout_path,:url => {:controller => "sessions", :action => "destroy"},:class => "fa fa-key" %></li>
+        </ul>
+      </li>
+      <!-- user login dropdown end -->
+    </ul>
+    <!--search & user info end-->
+    </div>
+</header>

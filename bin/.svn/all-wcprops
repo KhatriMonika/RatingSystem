@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/Ratingsystem/!svn/ver/498/ROR/bin
+END
+bundle
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/Ratingsystem/!svn/ver/498/ROR/bin/bundle
+END
+rails
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/Ratingsystem/!svn/ver/498/ROR/bin/rails
+END
+delayed_job
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/Ratingsystem/!svn/ver/498/ROR/bin/delayed_job
+END
+rake
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/Ratingsystem/!svn/ver/498/ROR/bin/rake
+END

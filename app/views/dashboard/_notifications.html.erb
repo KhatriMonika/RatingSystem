@@ -1,0 +1,90 @@
+<div class="col-md-5">
+  <section class="panel">
+      <header class="panel-heading">
+          Notifications <span class="tools pull-right">
+          <a href="javascript:;" class="fa fa-chevron-down"></a>
+          <a href="javascript:;" class="fa fa-times"></a>
+          </span>
+      </header>
+      <% if @to_be_notified_to_admin.present? %>
+        <div class="panel-body" style="display: block; ">
+          <% @notification_employees.each do |employee| %>
+            <div class="alert <%= cycle('alert-info', 'alert-danger','alert-success','alert-warning') -%>">
+                <span class="alert-icon"><%= image_tag employee.gravatar_url %></span>
+                <div class="notification-info">
+                    <ul class="clearfix notification-meta">
+                        <li class="pull-left notification-sender">
+                          <span>
+                            <%= employee.name %><br><%= employee.role %>
+                          </span>
+                        </li>
+                        <li class="pull-right notification-time ">
+
+                        </li>
+                    </ul>
+                    <p>  
+                        Rating Pending Last Rated On <%= @rating_details[employee.id].first.LastRDate %>
+                    </p>
+                </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <% if @to_be_warned.present? %>
+        <div class="panel-body" style="display: block; ">
+          <% @to_be_warned.each do |employee| %>
+            <div class="alert <%= cycle('alert-info', 'alert-danger','alert-success','alert-warning') -%>">
+                <span class="alert-icon"><%= image_tag employee.first.gravatar_url %></span>
+                <div class="notification-info">
+                    <ul class="clearfix notification-meta">
+                        <li class="pull-left notification-sender">
+                          <span>
+                            <%= employee.first.name %><br><%= employee.first.role %>
+                          </span>
+                        </li>
+                        <li class="pull-right notification-time">test</li>
+                    </ul>
+                    <p>
+                        Rating Pending Last Rated On <%=  employee.second %>
+                    </p>
+                </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>      
+  </section>
+</div>
+<div class="col-md-6">
+  <!--Leave start-->
+<section class="panel">
+  <header class="panel-heading">
+    Notifications <span class="tools pull-right">
+    <a href="javascript:;" class="fa fa-chevron-down"></a>
+    <a href="javascript:;" class="fa fa-times"></a>
+    </span>
+  </header>
+  <% if @to_be_notified_to_admin.present? %>
+    <div class="panel-body" style="display: block; ">
+      <% @to_be_notified_to_admin.each do |employee| %>
+        <div class="alert <%= cycle('alert-info', 'alert-danger','alert-success','alert-warning') -%>">
+          <span class="alert-icon"><%= image_tag employee.gravatar_url %></span>
+          <div class="notification-info">
+            <ul class="clearfix notification-meta">
+              <li class="pull-left notification-sender">
+                <span>
+                  <%= link_to "#{leave.leave_required_from} to #{leave.leave_required_to}"%>
+                </span>
+              </li>
+              <li class="pull-right notification-time"><%= leave.created_at.to_time.strftime('%B %e at %l:%M %p') %></li>
+            </ul>
+            <p>
+              <%= leave.reason_of_leave %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</section>
+<!--Leave end-->
+</div>

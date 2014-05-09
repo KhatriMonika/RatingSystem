@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/Ratingsystem/!svn/ver/563/ROR/app/views/leave_reason_categories
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/Ratingsystem/!svn/ver/536/ROR/app/views/leave_reason_categories/new.html.erb
+END
+_list.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/Ratingsystem/!svn/ver/563/ROR/app/views/leave_reason_categories/_list.html.erb
+END
+create.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/Ratingsystem/!svn/ver/549/ROR/app/views/leave_reason_categories/create.js.erb
+END
+edit.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/Ratingsystem/!svn/ver/549/ROR/app/views/leave_reason_categories/edit.js.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/Ratingsystem/!svn/ver/549/ROR/app/views/leave_reason_categories/_form.html.erb
+END

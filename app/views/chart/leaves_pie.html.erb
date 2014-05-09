@@ -1,0 +1,58 @@
+<div class="form-horizontal tasi-form col-md-12" id="report-form">
+  <%= form_tag @reports_leaves_path ,:method => :get, :remote => true do %>
+    <%= hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token) %>
+    <div class="row">
+      
+      <div class="col-lg-6">
+        <%= label_tag '','Reason Category' , :class => "control-label"%><br><br><br>
+        <div class="my-select">
+          <%= select_tag :reason_category, options_from_collection_for_select(LeaveReasonCategory.all,"id","name"), :id => "leave_reason_category_id_in_reports", :multiple => true %>
+        </div>
+      </div>
+      
+      <div class="form-group col-lg-6">
+        <%= label_tag '','Date' , :class => "control-label col-sm-4"%>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary btn-md">
+            <input type="radio" name="options" id="option1" value="Textual"> Textual
+          </label>
+          <label class="btn btn-primary btn-md">
+            <input type="radio" name="options" id="option2" value="Visual"> Visual
+          </label>
+          <label class="btn btn-primary btn-md">
+            <input type="radio" name="options" id="option3" value="Both"> Both
+          </label>
+        </div>
+        <br><br>
+        <div class="col-md-6">
+          <%= text_field_tag :date, Date.today - 1, placeholder: "Select the Date",class: 'reportrange form-control', style: "border: 1px solid #22BACF !important; width: 370px !important;"  %>
+          <%= hidden_field_tag :startdate,"", :id => "startdate"%>
+          <%= hidden_field_tag :enddate,"", :id => "enddate" %>
+        </div>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <%= label_tag '','Status' , :class => "control-label"%><br><br>
+        <div class="my-select">
+          <%= select_tag :status, options_for_select([["Sanctioned",0],["Not Sanctioned",1]]), :id => "satus_id", :multiple => true %>
+        </div>
+      </div>
+      <% if !(current_user.employee?) %>
+        <div class="col-lg-6">
+          <%= label_tag '','Employees' , :class => "control-label"%><br><br>
+          <div class="my-select">
+            <%= select_tag :employees, grouped_options_for_select(@all_employees), :multiple => true,:id => "employee_id" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<% if @details.present? %>
+  <%= render :partial => 'leave_table_details' %>
+  <%= content_for :charts do %>
+    <%= render :partial => 'leave_pie_chart' %>
+  <% end %>
+<% end %>

@@ -1,0 +1,8 @@
+Welcome to complitech.com, <%= @user.name %>
+===============================================
+
+your username is: <%= @user.email %>.
+ 
+<%= @factor.name %> will be applied to Employee Rating by Tommorrow onwards,
+ 
+Thank you and have a great day!

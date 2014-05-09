@@ -1,0 +1,39 @@
+<aside class=" col-lg-7">
+	<section class="panel">
+		<div class="panel-heading">
+				<h4>	Ratings of this week of <%= @employee.name %></h4> </div>
+				</script>
+		<div class="panel-body">
+			<ul class="nav nav-tabs">
+				<% last_rating = @employee.ratings.present? ?  @employee.ratings.maximum(:rating_date) : Date.today %>
+				<% @employee.ratings.where("rating_date BETWEEN ? AND ?", last_rating - 7 ,last_rating).each do |day| %>
+					<li><a href="#<%= day.rating_date %>" data-toggle="tab"><%= day.rating_date %></a></li>
+				<% end %>
+			</ul>
+
+			<br>
+			<div class="tab-content">
+				<% @employee.ratings.where("rating_date BETWEEN ? AND ?", Date.today - 30, Date.today.end_of_week).each do |day|%>
+			  		<div class="tab-pane " id="<%= day.rating_date %>">
+			  		Remarks : <%= day.remarks %><hr>
+				  		<% day.rating_details.each do |rating| %>
+
+				          <div class="form-group form_control">
+				          	<div class="col-sm-4  control-label">
+				          		<%= Factor.find(rating.factor_id).name %>
+			 							</div>
+
+				            <div class="col-sm-2 col-md-5">
+				            	<span class="<%= rating.rating_value >= Factor.find(rating.factor_id).average_possible_value ? 'badge bg-success' : 'badge bg-important' %>">
+
+				               	<%= rating.rating_value %> </span>
+				            </div>
+				          </div><br>
+				          <hr>
+				  		<% end %>
+			  		</div>
+			  <% end %>
+			</div>
+		</div>
+	</section>
+</aside>

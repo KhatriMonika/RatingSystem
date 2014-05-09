@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/Ratingsystem/!svn/ver/583/ROR/config
+END
+schedule.rb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/Ratingsystem/!svn/ver/513/ROR/config/schedule.rb
+END
+routes.rb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/Ratingsystem/!svn/ver/583/ROR/config/routes.rb
+END
+database.yml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/Ratingsystem/!svn/ver/498/ROR/config/database.yml
+END
+application.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/Ratingsystem/!svn/ver/524/ROR/config/application.rb
+END
+boot.rb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/Ratingsystem/!svn/ver/498/ROR/config/boot.rb
+END
+cucumber.yml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/Ratingsystem/!svn/ver/498/ROR/config/cucumber.yml
+END
+apns_config.pem
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/Ratingsystem/!svn/ver/498/ROR/config/apns_config.pem
+END
+environment.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/Ratingsystem/!svn/ver/498/ROR/config/environment.rb
+END

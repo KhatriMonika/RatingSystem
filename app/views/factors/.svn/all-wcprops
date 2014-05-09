@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/Ratingsystem/!svn/ver/533/ROR/app/views/factors
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/Ratingsystem/!svn/ver/513/ROR/app/views/factors/edit.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/Ratingsystem/!svn/ver/498/ROR/app/views/factors/new.html.erb
+END
+_form_new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/Ratingsystem/!svn/ver/498/ROR/app/views/factors/_form_new.html.erb
+END
+_list_factors.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/Ratingsystem/!svn/ver/533/ROR/app/views/factors/_list_factors.html.erb
+END

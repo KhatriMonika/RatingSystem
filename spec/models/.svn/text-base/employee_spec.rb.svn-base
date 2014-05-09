@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: employees
+#
+#  id                  :integer          not null, primary key
+#  name                :string(255)
+#  email               :string(255)
+#  role_id             :integer
+#  team_id             :integer
+#  technology_id       :integer
+#  created_at          :datetime
+#  updated_at          :datetime
+#  auth_token          :text
+#  devise_type         :string(255)      default("ios")
+#  devise_token        :string(255)
+#  known_technology_id :string(255)
+#
+# Indexes
+#
+#  index_employees_on_role_id_and_team_id  (role_id,team_id)
+#  index_employees_on_team_id              (team_id)
+#
+
+require 'spec_helper'
+
+describe Employee do
+
+
+end

@@ -1,0 +1,22 @@
+<aside class="profile-nav col-lg-3">
+  <section class="panel">
+    <div class="user-heading round">
+
+      <a href="#"><%= image_tag @team.photo_image, :size => '150x150' %></a>
+      <h1 class="break-me"><%= @team.name %></h1>
+      Manager : <%= @team.project_manager.name %>
+    </div>
+
+    <ul class="nav nav-pills nav-stacked">
+      <li class="<%= current_page?(team_path(@team.id)) ? "active" : ""%>">
+        <%= link_to (team_path(@team.slug)) do %>
+          <i class="fa fa-users"></i>  Members</li>
+        <% end %>
+      <li class="<%= current_page?(edit_team_path(@team.id)) ? "active" : ""%>">
+        <%= link_to (edit_team_path(@team.slug)) do %>
+          <i class="fa fa-edit"> </i>  Edit Team Details
+        <% end %>
+      </li>
+    </ul>
+  </section>
+</aside>

@@ -1,0 +1,113 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="modal fade team-add-member" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Add Members</h4>
+          </div>
+          <div class="modal-body">
+              <ul class="nav nav-tabs">
+                <li class="active">
+                  <a href="#complitech" data-toggle="tab">
+                    <div class="round-image">
+                      <%= image_tag "logo_cspl.png", :size => '90x90'%><br>
+                    </div><br>
+                    <center>
+                      <h4>Unallocated</h4><br>
+                    </center>
+                  </a>
+                </li>
+                <% team_list = @team.id.present? ? @teams.where("id != ?",@team.id) : @teams %>
+                <% team_list.each do |team| %>
+                <li>
+                  <a href="#team<%= team.id %>" data-toggle="tab">
+                    <div class="round-image row">
+                      <%= image_tag team.photo_image, :size => "90x90" %>
+                    </div><br><br>
+                    <center class="row break-me">
+                    <h4><%= team.name %></h4>
+                    Manager : <%= team.project_manager.name.split(" ").first %>
+                  </center>
+                  </a>
+                </li>
+                <% end %>
+              </ul>
+            <div class="tab-content">
+              <div class="tab-pane active product-list" id="complitech">
+                <div class="panel-body well">
+                  <% @unallocated_members.each do |developer| %>
+                    <div class="col-md-3 informations" id="div-inner<%= developer.id %>">
+                      <section class="panel">
+                          <div class="pro-img-box">
+                            <%= image_tag developer.gravatar_url, :size => '100x120' %>
+                            <div class="adtoteam">
+                              <a href="#" class="add_to_team" id="inner-<%= developer.id %>"><i class="fa fa-plus adtoteam_i"></i></a>
+                            </div>
+                          </div>
+                          <div class="panel-body text-center">
+                            <h4>
+                              <%= developer.name.upcase %>
+                            </h4>
+                            <i class="fa fa-desktop"></i> : <%= developer.tech %>
+                          </div>
+                      </section>
+                    </div>
+                  <% end %>
+                  <% if @team.id.present? %>
+                    <% @team.team_members.each do |developer| %>
+                    <div class="col-md-3 informations hidden-employee" id="div-inner<%= developer.id %>">
+                      <section class="panel">
+                          <div class="pro-img-box">
+                            <%= image_tag developer.gravatar_url, :size => '100x120' %>
+                            <div class="adtoteam">
+                              <a href="#" class="add_to_team" id="inner-<%= developer.id %>"><i class="fa fa-plus adtoteam_i"></i></a>
+                            </div>
+                          </div>
+                          <div class="panel-body text-center">
+                            <h4>
+                              <%= developer.name.upcase %>
+                            </h4>
+                            <i class="fa  fa-desktop"></i> : <%= developer.tech %>
+                          </div>
+                      </section>
+                    </div>
+                  <% end %>
+                  <% end %>
+                </div>
+              </div>
+              <% team_list.each do |team|%>
+                <div class="tab-pane product-list" id="team<%= team.id %>">
+                  <div class="panel-body well">
+                    <% team.team_members.each do |developer| %>
+                      <div class="col-md-3 informations" id="div-inner<%= developer.id %>">
+                        <section class="panel">
+                          <div class="pro-img-box">
+                            <%= image_tag developer.gravatar_url, :size => '100x120' %>
+                            <div class="adtoteam">
+                              <a href="#" class="add_to_team" id="inner-<%= developer.id %>"><i class="fa fa-plus adtoteam_i"></i></a>
+                            </div>
+                          </div>
+                          <div class="panel-body text-center">
+                            <h4>
+                              <%= developer.name.upcase %>
+                            </h4>
+                            <i class="fa  fa-desktop"></i> : <%= developer.tech %>
+                          </div>
+                        </section>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+  </div><!-- /.cpl-lg-12 -->
+</div><!-- /.row -->

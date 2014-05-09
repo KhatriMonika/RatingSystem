@@ -1,0 +1,7 @@
+$("#form").html("<%= escape_javascript(render :partial=> 'form') %>");
+$("#heading").html('<span><h3><i class="fa fa-edit"></i> </span> Edit Leave Reason Category</h3>');
+$("#linkdiv").html('<hr><%= link_to "Cancel", new_leave_reason_category_path, :class => "btn btn-success" %>');
+$("#leave_reason_category_colour").spectrum({
+  preferredFormat: "hex",
+  color: "<%= @leave_reason_category.colour %>"
+});

@@ -1,0 +1,110 @@
+<!-- Factor and Datewise -->
+<a name='ChartList'/>
+<div class="panel panel-default ">
+  <div class="panel-heading"><h3>Factor and Datewise</h3></div>
+  <div class="panel-body">  
+    API URL: <br />
+  	<span id="link_ChartList"><%= "#{DOMAIN_CONFIG}/api/v1/charts/date_factorwise_employees" %></span><br/>
+    Method: <span id="method_ChartList">GET</span><br />
+		<form class="form_ChartList"><br />
+	    Parameters:<br />
+		  <table width='100%' cellpadding="4" cellspacing="0" border='1' bordercolor='#808080'> 	    
+		    <thead>
+	        <tr bgcolor="#eeeeee"><td> Field name </td><td> Description </td>		<td>Example</td>
+	           <td>Req</td>
+	        </tr>
+	        </thead>
+		    <tbody>	
+			    <tr>
+		        <td width=140>auth_token</td>
+		        <td> The auth_token of the login session of the  user </td>
+		        <td width='210'> 
+		        	<input id='input_ChartList_token' class="form-control" name="token" class="input_ChartList" size='40' onkeyup='change_ChartList();' value=''>
+		        </td>
+		        <td width='30'> * </td>
+		    	</tr>
+	      </tbody>
+	      <tbody>	
+			    <tr>
+		        <td width=140>startdate</td>
+		        <td> start date of Rating </td>
+		        <td width='210'> 
+		        	<input id='input_ChartList_startdate' class="form-control" name="token" class="input_ChartList" size='40' onkeyup='change_ChartList();' value=''> 
+		        </td>
+		        <td width='30'> * </td>
+		    	</tr>
+	      </tbody>
+	       <tbody>	
+			    <tr>
+		        <td width=140>enddate</td>
+		        <td> end date of Rating </td>
+		        <td width='210'> 
+		        	<input id='input_ChartList_enddate' class="form-control" name="token" class="input_ChartList" size='40' onkeyup='change_ChartList();' value=''> 
+		        </td>
+		        <td width='30'> * </td>
+		    	</tr>
+	      </tbody>
+	       <tbody>	
+			    <tr>
+		        <td width=140>pmid</td>
+		        <td> Project Manager id </td>
+		        <td width='210'> 
+		        	<input id='input_ChartList_pmid' class="form-control" name="token" class="input_ChartList" size='40' onkeyup='change_ChartList();' value=''> 
+		        </td>
+		        <td width='30'> * </td>
+		    	</tr>
+	      </tbody>
+	       <tbody>	
+			    <tr>
+		        <td width=140>factorid</td>
+		        <td> Factor id for particular factor </td>
+		        <td width='210'>
+		        	<input id='input_ChartList_factorid' class="form-control" name="token" class="input_ChartList" size='40' onkeyup='change_ChartList();' value=''> 
+		        </td>
+		        <td width='30'> * </td>
+		    	</tr>
+	      </tbody>
+	    </table>
+    </form><br/><br/>
+    Example call <br/>
+    <textarea id='example_ChartList'  class="form-control"  style='font-family: Courier New' rows=4 cols=90><%="#{DOMAIN_CONFIG}"%>/api/v1/chart/date_factorwise_employees?auth_token=&startdate=&enddate=&pmid=&factorid=&
+    </textarea>
+    <br/>
+
+    <input type='button' id='button_ChartList' onClick='example("ChartList");' value='Execute'> 
+    <br/>
+    <br/>
+
+
+    <div id='output_ChartList' style='font-family: courier new; font-size: 10pt;'>
+    </div>
+    <br />
+
+    <pre>var apiCall = "<?=Yii::app()->createUrl('<%="#{DOMAIN_CONFIG}"%>/api/v1/charts/date_factorwise_employees?');?>";
+apiCall = apiCall + '&token=' + escape(valtoken);
+apiCall = apiCall + '&startdate=' + escape(valstartdate);
+apiCall = apiCall + '&enddate=' + escape(valenddate);
+apiCall = apiCall + '&pmid=' + escape(valpmid);
+apiCall = apiCall + '&factorid=' + escape(valfactorid);
+
+$.getJSON(apiCall, function(r)
+{
+});
+		</pre>    
+		<a href='#top'>go to top</a>
+	</div>
+</div><br />
+<script type="text/javascript">
+    function change_ChartList()
+    {
+        var link = '<%="#{DOMAIN_CONFIG}"%>/api/v1/charts/date_factorwise_employees?';
+        link += "auth_token=" + escape($("#input_ChartList_token").val()) + "&";
+        link += "startdate=" + escape($("#input_ChartList_startdate").val()) + "&";
+        link += "enddate=" + escape($("#input_ChartList_enddate").val()) + "&";
+        link += "pmid=" + escape($("#input_ChartList_pmid").val()) + "&";
+        link += "factorid=" + escape($("#input_ChartList_factorid").val());
+        $("#example_ChartList").val(link);
+    }
+</script>
+
+<!-- Factor and Datewise-->

@@ -1,0 +1,112 @@
+<div class="row col-lg-12" id="regular_irregular_employees">
+  <% if @regular_employees.present? %>
+    <div class="col-lg-6">
+      <div class="well">
+        <div id="regular_container" style="min-width: 200px; max-width: 600px; height: auto; margin: 0 auto" align="left">
+        </div>
+        <% count = @regular_employees.length - 3 %>
+        <% if count > 0  && current_page?(dashboard_index_path) %>
+          <%= link_to (most_regular_irregular_employees_chart_index_path) do %>
+            <%= count %> More
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        var data_regular =[];
+        <% count = 1 %>
+        <% @regular_employees.each do |data| %>
+          <% if (count < 4 && current_page?(dashboard_index_path))  || current_page?(most_regular_irregular_employees_chart_index_path) %>
+            data_regular.push(['<%= data.first %>',<%= data.last %>])
+          <% end %>
+          <% count = count + 1 %>
+        <% end %>
+        $('#regular_container').highcharts({
+            chart: {
+                type: 'pyramid',
+                marginRight: 100
+            },
+            title: {
+                text: 'Regular Employees',
+                x: -50
+            },
+            plotOptions: {
+                series: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b><%= @flag ? "(0)" : "({point.y})" %>',
+                        color: 'black',
+                        softConnector: true
+                    }
+                }
+            },
+            tooltip: {
+              enabled: false
+            },
+            legend: {
+                enabled: false
+            },
+            series: [{
+                name: 'Regular Employees',
+                data: data_regular
+            }]
+        });
+      });
+    </script>
+  <% end %>
+  <% if @irregular_employees.present? %>
+    <div class="col-md-6">
+      <div class="well">
+        <div id="container" style="min-width: 410px; max-width: 600px; height: auto; margin: 0 auto">
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        var data_irregular =[];
+        <% @irregular_employees.each do |data| %>
+           data_irregular.push(['<%= data.first %>',<%= data.last %>])
+        <% end %>
+        $('#container').highcharts({
+            chart: {
+                type: 'funnel',
+                marginRight: 100
+            },
+            title: {
+                text: 'Irregular Employees',
+                x: -50
+            },
+            plotOptions: {
+                series: {
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b> ({point.y})',
+                        color: 'black',
+                        softConnector: true
+                    },
+                    neckWidth: '30%',
+                    neckHeight: '25%'
+                }
+            },
+            tooltip: {
+              enabled: false
+            },
+            legend: {
+                enabled: false
+            },
+            series: [{
+                name: 'Irregular Employees',
+                data: data_irregular
+            }]
+        });
+      });
+    </script>
+  <% end %>
+</div>
+<% if @message.present? %>
+    <script type="text/javascript">
+        jQuery.gritter.add({image: '/assets/success.png',title: 'Success', text: '<%= @message %>'});
+    </script>
+<% end %>

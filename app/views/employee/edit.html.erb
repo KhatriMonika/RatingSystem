@@ -1,0 +1,58 @@
+<% provide(:title, 'Profile Edit') %>
+<%= render :partial => "shared/profile_sidebar" %>
+<aside class="profile-info col-lg-9">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well">
+        <section class="panel">
+          <div class="panel-heading">
+            <span><h4><i class="fa fa-user"></i> </span> Please Complete Your Profile</h4>    
+          </div>                 
+          <div class="panel-body">
+   	        <div class="form-horizontal tasi-form col-md-8">
+   		        <%= form_for( @employee, method: :put, :html => { :multipart => true}) do |f| %>
+                <div class="form-group">
+                  <%= f.label :Name, :class => "col-sm-4  control-label" %> 
+                  <div class="col-sm-2 col-md-5">
+                   	<%= f.text_field :name, :autofocus => true, :class => "form-control " %>
+                  </div>
+                </div>
+                <% if (current_user == @employee) %>
+                  <% if current_user.admin? %>
+                    <div class="form-group">
+                      <%= f.label "Primary Technology", :class => "col-sm-4  control-label" %> 
+                      <div class="col-sm-2 col-md-5 ">
+                        <%= f.select :technology_id, (Technology.all.collect {|tech| [tech.name, tech.id]}), :prompt => "Select Technology",:class => "form-control bound-s" %>
+                      </div>
+                    </div>
+                  <% end %>
+                    <div class="form-group">
+                      <%= f.label "Known Technologies", :class => "col-sm-4  control-label" %>
+                      <%= f.text_field :known_technology_id, :class => "tagsinput", :id => "tagsinput" %>
+                    </div>
+                    
+                    <div class="form-group">
+                      <%= f.label "BirthDate", :class => "col-sm-4  control-label" %> 
+                      <%= f.text_field :birthdate, as: :string, :class => "col-md-4 input sdp", value: @employee.birthdate.present? ? @employee.birthdate : Date.today - (355 *22 ) %>
+                    </div>
+                    <% if !current_user.admin? %>
+                    <div class="form-group">
+                      <%= f.label "Joining Date", :class => "col-sm-4  control-label" %> 
+                      <div class="col-sm-2 col-md-5 btn-group">
+                        <div class="col-sm-2 col-md-5 btn-group">
+                          <%= f.text_field :joining_date, as: :string, :class => "col-md-4 input sdp", value:  @employee.joining_date.present? ? @employee.joining_date : Date.today %>
+                       
+                      </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+		            <%= f.submit "Update", :class => "btn btn-info" %>
+		          <% end %>
+            </div>
+  	      </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</aside>

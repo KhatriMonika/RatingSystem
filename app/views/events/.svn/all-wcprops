@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/Ratingsystem/!svn/ver/559/ROR/app/views/events
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/Ratingsystem/!svn/ver/559/ROR/app/views/events/index.html.erb
+END
+_calendar.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/Ratingsystem/!svn/ver/554/ROR/app/views/events/_calendar.html.erb
+END
+get_events.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/Ratingsystem/!svn/ver/557/ROR/app/views/events/get_events.js.erb
+END

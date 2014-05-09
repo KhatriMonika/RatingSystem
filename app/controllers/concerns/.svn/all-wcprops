@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/Ratingsystem/!svn/ver/570/ROR/app/controllers/concerns
+END
+google_calendar_client_module.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/Ratingsystem/!svn/ver/570/ROR/app/controllers/concerns/google_calendar_client_module.rb
+END
+rating_module.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/Ratingsystem/!svn/ver/570/ROR/app/controllers/concerns/rating_module.rb
+END
+dashboard_module.rb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/Ratingsystem/!svn/ver/570/ROR/app/controllers/concerns/dashboard_module.rb
+END
+.keep
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/Ratingsystem/!svn/ver/498/ROR/app/controllers/concerns/.keep
+END
+leave_module.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/Ratingsystem/!svn/ver/562/ROR/app/controllers/concerns/leave_module.rb
+END
+chart_module.rb
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/Ratingsystem/!svn/ver/560/ROR/app/controllers/concerns/chart_module.rb
+END

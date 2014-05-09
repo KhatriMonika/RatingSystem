@@ -1,0 +1,24 @@
+$(".calendar_div").html('<%= escape_javascript(render(:partial => "calendar"))%>');
+
+$('#calendar').fullCalendar(
+{
+  header: 
+  {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,basicWeek,basicDay'
+  },
+   eventSources: [
+        {
+            url: "/events/get_events?calendar_id=<%= params[:calendar_id] %>",
+            type: 'GET',
+            error: function() {
+                alert('there was an error while fetching events!');
+            },
+            success: function() {
+                setTimeout($.unblockUI, 1000);
+            },
+        }
+    ]
+});
+

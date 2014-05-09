@@ -1,0 +1,27 @@
+<% if @birthdays.present? %>
+  <section class="panel col-lg-12">
+    <div class="rightcol right" >
+    <div class="scrollable-content" style="overflow: hidden; outline: none; min-height: 200px;">
+    <p class="catname" style = "color: #FFFFFF; height: 180px;">
+      <i class="fa fa-gift fa-lg"></i>&nbsp;&nbsp;Upcoming Birthdays
+    </p>
+    <br><br>
+    <% @birthdays.each do |employee| %>
+      <article class="media">
+        <a class="pull-left thumb p-thumb">
+        <%= image_tag employee.gravatar_url, :size => '30x30' %>
+        </a>
+        <div class="media-body">
+          <a href="#" class=" p-head"><i class="fa fa-gift"></i>&nbsp;&nbsp;<%= employee.name %></a>
+          <p>
+            <%= employee.birthdate.strftime("%dth %B %A") %> &nbsp;&nbsp;<br>
+            <% (days = employee.birthdate.day - Date.today.day) %>
+            <%= days == 0 ? "<label class='label label-success'>Today</label>".html_safe : "#{days} days to go" %>
+            </p>
+        </div>
+        </article>
+      <% end %>  
+    </div>
+    </div>
+  </section>
+<% end %>

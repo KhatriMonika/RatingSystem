@@ -1,0 +1,55 @@
+<ul class="grid cs-style-6">
+<% @employee.each do |employee| %>
+  <li>
+    <figure>
+      <img alt="image is missing"  src="<%= employee.gravatar_url %>?s=300" >
+      <figcaption>
+        <center>
+          <h3><%= employee.team_name %></h3>
+          <span><h4><%= employee.role %></h4></span>
+        </center>
+        <p>
+          <%= link_to  change_employee_employee_index_path(employee.slug) do %>
+            <button class= "btn btn-success btn-xs">
+              <i class="fa fa-cog fa-lg"></i>
+            </button>
+          <% end %> 
+        </p> 
+        <p>    
+          <%= link_to  state_changed_employee_index_path(employee.slug), method: :post do %>
+            <button class="<%= employee.active ? 'btn btn-info btn-xs' : 'btn btn-danger btn-xs' %>">
+            <i class="<%= employee.active ? 'fa fa-minus-circle fa-lg' : 'fa fa-plus-circle fa-lg' %>"></i>
+            </button>
+          <% end %> 
+        </p>      
+      </figcaption>
+      <div class="name-panel">
+          <font size="3" color="white"><%= employee.name.capitalize %></font>
+      </div>
+      <div class="panel panel-info">
+        <div align="left">
+          <% if @ratings[employee.id].present? %>
+          <span class="inlinebar<%= employee.id %>"></span>
+          <script type="text/javascript">
+            $(function () 
+            {
+              $(".inlinebar<%= employee.id %>").sparkline(<%= @ratings[employee.id] %>, {
+              type: 'line',
+              width: '208',
+              height: '40',
+              chartRangeMin: -1,
+              chartRangeMax: 10,
+              lineColor: '#7f0000',
+              fillColor: '#56aaff'});
+            });
+          </script> 
+         <% else %>
+         <h4 style="width: 210px; height: 40px; padding: 5px 67px 20px 25px"> No Ratings Found </h4>
+         <% end %>
+                   
+        </div>
+      </div>   
+    </figure>
+  </li>
+<% end %>
+</ul>

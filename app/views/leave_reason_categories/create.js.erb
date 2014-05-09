@@ -1,0 +1,7 @@
+$("#form").html("<%= j(render :partial=> 'form') %>");
+$("#heading").html('<span><h3><i class="fa fa-plus-square-o"></i> </span> Add Leave Reason Category</h3>');
+$("#linkdiv").html('');
+$("#list").html("<%= j(render :partial=> 'list') %>");
+$("#leave_reason_category_colour").spectrum({
+  preferredFormat: "hex"
+});

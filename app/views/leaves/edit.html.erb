@@ -1,0 +1,58 @@
+<div class="row well">
+  <aside class="col-lg-5">
+    <section class="panel">
+      <header class="panel-heading tab-bg-dark-navy-blue">
+        <ul class="nav nav-tabs nav-justified ">
+          <% if current_user.project_manager? %>
+            <li class="active">
+              <a href="#leave_list" data-toggle="tab">
+                  My Leaves
+              </a>
+            </li>
+          <li>
+            <%= link_to "Team Member's Leave", leaves_path %>
+          </li>
+          <% else %>
+            <li class="active">
+              <a href="#leave_list" data-toggle="tab">
+                  List
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </header>
+      <div class="panel-body">
+        <div class="tab-content tasi-tab">
+          <div class="tab-pane active" id="leave_list">
+            <div class="row">
+              <div class="col-md-12">
+                <section class="panel tasks-widget">
+                  <div class="task-content">
+                    <%= render :partial => 'list_leaves', locals: {leaves: @leaves} %>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+          <% if current_user.project_manager? %>
+            <div class="tab-pane" id="others_leave_list">
+              <%= render :partial => 'list_leaves', locals: {leaves: @team_members_leaves} %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </aside>
+  <aside class="col-lg-7">
+    <section class="panel">
+      <div class="panel-body">
+        <% if @leave.employee_id == current_user.id %>
+          <%= render 'form' %>
+        <% else %>
+          <%= render 'form_sanction' %>
+        <% end %>
+      </div>
+    </section>
+  </aside>
+</div>
+

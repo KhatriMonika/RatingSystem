@@ -1,0 +1,107 @@
+<!-- Login details  -->  
+	<a name='login'  />
+		      <div class="panel panel-default ">
+		        <div class="panel-heading"><h3>Login</h3></div>
+		       	<div class="panel-body">
+			    		API URL: <br />
+			    		<span id="link_login"><%= "#{DOMAIN_CONFIG}"+api_v1_sessions_path %>/</span><br />
+			    		Method: <span id="method_login">POST</span><br />
+							<form class="form_login"><br/>
+				    		Parameters:
+				    		<br/><hr/>
+					      <table class="table"> 	    
+							    <thead>
+							        <tr bgcolor="#eeeeee"><td> Field name </td><td> Description </td><td>Example</td>
+							            <td>Req</td></tr>
+						        </thead>
+							    <tbody>	
+									    <tr>
+								        <td> auth_token</td>
+								        <td> The user's google acsess_token to authenticate </td>
+								        <td> <input id='input_login_username' name="auth_token"  size='40' onkeyup='change_login();' value='' class="form-control"> </td>
+								        <td width='30'> * </td>
+								    </tr>
+						      </tbody>
+					      </table>
+	        		</form><br/><br/>
+	    				Example call <br/>
+
+					    <textarea id='example_login' style='font-family: Courier New' rows=4 cols=90 class="form-control"><%= "#{DOMAIN_CONFIG}"+api_v1_sessions_path %>?auth_token=xxxx</textarea>
+					    <br/><br/>
+					    <input type='button' id='button_login' onClick='example("login");' value='Execute' class="btn"> <br/><br/>
+					    <div id='raw_login' style='font-family: courier new; font-size: 10pt;'></div><br/>
+					    <div id='output_login' style='font-family: courier new; font-size: 10pt;'></div><br />
+					    <pre>var apiCall = "<?=Yii::app()->createUrl('<%= "#{DOMAIN_CONFIG}"+api_v1_sessions_path %>?');?>";
+					    apiCall = apiCall + 'auth_token=' + escape(valusername);
+					    $.getJSON(apiCall, function(r){	});
+							</pre>
+							<a href='#top'>go to top</a>
+					</div>
+    		</div>
+    	<br />
+	    <script type="text/javascript">
+	        function change_login()
+	        {
+	            var link = '<%= "#{DOMAIN_CONFIG}"+api_v1_sessions_path %>?';
+	                            link += "auth_token=" + escape($("#input_login_username").val()) + "&";
+	            $("#example_login").val(link);
+	        }
+	    </script>
+<!-- Login Ends -->
+
+
+<!-- Logout starts -->
+
+  <a name='logout'/>
+	<div class="panel panel-default ">
+    <div class="panel-heading"><h3>Logout session</h3></div>
+    <div class="panel-body">  
+	    API URL: <br />
+    	<span id="link_logout"><%= "#{DOMAIN_CONFIG}"+logout_api_v1_sessions_path %></span><br/>
+	    Method: <span id="method_logout">GET</span><br />
+			<form class="form_logout"><br />
+		    Parameters:<br />
+			  <table width='100%' cellpadding="4" cellspacing="0" border='1' bordercolor='#808080'> 	    
+			    <thead>
+		        <tr bgcolor="#eeeeee"><td> Field name </td><td> Description </td><td>Example</td>
+		            <td>Req</td></tr>
+		        </thead>
+			    <tbody>	
+				    <tr>
+			        <td width=140>auth_token</td>
+			        <td> The auth_token of the login session of the  user </td>
+			        <td width='210'> <input id='input_logout_token' class="form-control" name="token" class="input_logout" size='40' onkeyup='change_logout();' value=''> </td>
+			        <td width='30'> * </td>
+			    	</tr>
+		      </tbody>
+		    </table>
+	    </form><br/><br/>
+	    Example call <br/>
+	    <textarea id='example_logout'  class="form-control"  style='font-family: Courier New' rows=4 cols=90><%= "#{DOMAIN_CONFIG}"+logout_api_v1_sessions_path %>?auth_token=&</textarea>
+	    <br/>
+	    <input type='button' id='button_logout' class="btn" onClick='example("logout");' value='Execute'> <br/>
+	    <br/>
+	    <div id='raw_logout' style='font-family: courier new; font-size: 10pt;'>
+	    </div>
+	    <br/>
+	    <div id='output_logout' style='font-family: courier new; font-size: 10pt;'>
+	    </div>
+	    <br />
+	    <pre>var apiCall = "<?=Yii::app()->createUrl('<%= "#{DOMAIN_CONFIG}"+logout_api_v1_sessions_path %>?');?>";
+	apiCall = apiCall + '&token=' + escape(valtoken);
+	$.getJSON(apiCall, function(r){
+	});
+			</pre>    
+			<a href='#top'>go to top</a>
+		</div>
+	</div><br />
+  <script type="text/javascript">
+      function change_logout()
+      {
+          var link = '<%= "#{DOMAIN_CONFIG}"+logout_api_v1_sessions_path %>?';
+              link += "auth_token=" + escape($("#input_logout_token").val()) + "&";
+          $("#example_logout").val(link);
+      }
+  </script>
+
+<!--Logout ends -->

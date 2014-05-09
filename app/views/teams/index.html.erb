@@ -1,0 +1,34 @@
+<div class="well">    
+  <div class="panel">
+    <div class="panel-heading"><span>
+      <h3><i class="fa fa-list-ul"></i> </span> List of Teams</h3>
+    </div>
+    <div class="panel-body well">
+      <% @teams.each do |team| %>
+        <div class="col-xs-3">
+          <section class="panel panel-default">
+            <div class="panel-body">
+              <div class="pull-right">
+                <%= link_to edit_team_path(team.slug), :class => "badge" do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+                <%= link_to team_path(team.slug), :class => "badge bg-important", method: :delete, :data => { :confirm => "Are you sure?" } do %>
+                  <i class="fa fa-trash-o fa-lg"></i>
+                <% end %>
+              </div>
+              <%= link_to (team_path(team.slug)) do %>
+                <%= image_tag team.photo_image, :size => '90x90' %>
+                <center>
+                  <div class="break-me">
+                    <h4><%= link_to team.name, team_path(team.slug)%></h4>
+                    Manager : <%= team.project_manager.name %>
+                  </div>
+                </center>
+              <% end %>
+            </div>
+           </section>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

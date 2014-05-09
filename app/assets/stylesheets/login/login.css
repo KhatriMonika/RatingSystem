@@ -1,0 +1,25 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:"Trebuchet MS", "Myriad Pro", Arial, sans-serif;
+  font-size:14px;
+  background:#f4f4f4 url('bg_home.png') no-repeat;
+  background-size:cover;
+  color:#333;
+  text-shadow:1px 1px 1px #fff;
+  overflow-y:scroll;
+}
+.name-panel {
+width: 210%;
+height: 96px;
+text-align: center;
+top: 444px;
+left: 689px;
+position: absolute;
+background: rgba(0, 0, 0, 0.6);
+z-index: 999;
+border-radius: 49px;
+}

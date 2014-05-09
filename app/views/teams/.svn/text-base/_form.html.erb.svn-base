@@ -1,0 +1,119 @@
+<div class="form-horizontal tasi-form">
+  <%= simple_form_for @team,:html => { :class => 'form-horizontal'} do |f|%>
+    <div class="row">
+      <%= f.input :name, :input_html => { :class => "col-md-4 input" },:error_html => { :class => 'col-md-6'}, :label_html => { :class => 'col-md-2'}%>
+    </div>
+    <div class="row">
+      <%= f.input :project_manager_id, :collection => @project_managers_for_new_team.collect {|project_manager| [project_manager.name, project_manager.id]}, :include_blank => false, :input_html => { :class => "col-md-4 input"}, :error_html => {:class => "col-md-6"}, :lable_html => { :class => "col-md-2"} %>
+    </div>
+    <div class="row">
+      <%= f.input :photo, :input_html => { :class => "col-md-4 input" },:error_html => { :class => 'col-md-6'}, :label_html => { :class => 'col-md-2'}%>
+    </div>
+    <%= hidden_field_tag :add_to_team,"", :id => "add_to_team"%>
+    <%= hidden_field_tag :remove_from_team,"", :id => "remove_from_team" %>
+    
+    <div class="panel">
+      <div class="panel-heading">
+        Members
+      </div>
+      <div  class="panel-body well row product-list">
+        <% @unallocated_members.each do |developer| %>
+          <div class="col-md-2 informations hidden-employee" id="div-outer<%= developer.id %>">
+            <section class="panel">
+              <div class="pro-img-box">
+                <%= image_tag developer.gravatar_url, :size => '100x120' %>
+                <div class="adtoteam">
+                  <a href="#" class="add_to_team" id="outer-<%= developer.id %>"><i class="fa fa-minus"></i></a>
+                </div>
+              </div>
+              <div class="panel-body text-center">
+                <h4>
+                  <%= developer.name.upcase %>
+                </h4>
+                <i class="fa  fa-desktop"></i> : <%= developer.tech %>
+              </div>
+            </section>
+          </div>
+        <% end %>
+        <% @teams.each do |team| %>
+          <% team.team_members.each do |developer| %>
+            <div class="col-md-2 informations <%= team.id != @team.id ? 'hidden-employee' : ''%>" id= "div-outer<%= developer.id %>">
+              <section class="panel">
+                <div class="pro-img-box">
+                  <%= image_tag developer.gravatar_url, :size => '100x120' %>
+                  <div class="adtoteam">
+                    <a href="#" class="add_to_team" id="outer-<%= developer.id %>"><i class="fa fa-minus adtoteam_i"></i></a>
+                  </div>
+                </div>
+                <div class="panel-body text-center">
+                  <h4>
+                    <%= developer.name.upcase %>
+                  </h4>
+                  <i class="fa  fa-desktop"></i> : <%= developer.tech %>
+                </div>
+              </section>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="col-md-2 informations">
+        <section class="panel">
+          <div class="pro-img-box">
+            <%= image_tag "default.jpg", :size => '100x120',"data-toggle" => "modal", "data-target" => "#myModal"%><br>
+            <div class="adtoteam">
+              <a class="btn btn-xs" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus adtoteam_i"></i></a>
+            </div>
+          </div>
+          <div class="panel-body text-center">
+            <br>
+            <h4>
+              Add Members
+            </h4>
+          </div>
+        </section>
+      </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-8" align="center">        
+        <%= f.button :submit, :class => "btn btn-info" %>
+        <%= link_to "Cancel", teams_path , :class => "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= render :partial => 'modal_add_members' %>
+<script>
+  var remove_from_team = new Array;
+  var add_to_team = new Array;
+  $('.add_to_team').click(function()
+  {
+    var employee_id = $(this).attr('id');
+    var id = employee_id.substring(6);
+    if(employee_id.search("inner") != -1)
+    {
+      if( $.inArray(id,remove_from_team) != -1 ) {
+        remove_from_team.splice($.inArray(id,remove_from_team),1);
+      } else {
+        add_to_team.push(id);
+      }
+      $('#add_to_team').val(add_to_team);
+      $('#remove_from_team').val(remove_from_team);
+      $('#div-outer'+id).show();
+      $('#div-inner'+id).hide();
+    }
+    if (employee_id.search("outer") != -1)
+    {
+      if( $.inArray(id,add_to_team) != -1 ) {
+        add_to_team.splice($.inArray(id,add_to_team),1);
+      } else {
+        remove_from_team.push(id);
+      }
+      $('#add_to_team').val(add_to_team);
+      $('#remove_from_team').val(remove_from_team);
+      $('#div-outer'+id).hide();
+      $('#div-inner'+id).show();
+    }
+  });
+  $('.hidden-employee').hide();
+</script>

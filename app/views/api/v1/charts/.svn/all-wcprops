@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/Ratingsystem/!svn/ver/557/ROR/app/views/api/v1/charts
+END
+employee_total_rating.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/Ratingsystem/!svn/ver/498/ROR/app/views/api/v1/charts/employee_total_rating.json.jbuilder
+END
+top_improving_employees.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/Ratingsystem/!svn/ver/543/ROR/app/views/api/v1/charts/top_improving_employees.json.jbuilder
+END
+datewise_and_factorwise_employees_performance.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/Ratingsystem/!svn/ver/498/ROR/app/views/api/v1/charts/datewise_and_factorwise_employees_performance.json.jbuilder
+END

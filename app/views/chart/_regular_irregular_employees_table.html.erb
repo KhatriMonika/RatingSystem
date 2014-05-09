@@ -1,0 +1,40 @@
+<div id="regular_irregular_employees_table">
+  <% if @regular_employees.present? %>
+    <div class="panel panel-success col-md-6">
+      <div class="panel-heading">Most Regular Employees</div>
+      <div class="panel-body scrollable-content" style="height:200px;">               
+        <table class="table table-striped table-hover table-bordered ">
+          <tr>
+            <th> Employee Name </th>
+            <th> Number of days </th>      
+          </tr>
+          <% @regular_employees.each do |data| %>
+            <tr>
+              <td><%= data.first %></td>
+              <td><%= @flag ? "0" : data.last %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  <% end %>
+  <% if @irregular_employees.present? %>
+    <div class="panel panel-danger col-md-6">
+      <div class="panel-heading">Most Irregular Employees</div>
+      <div class="panel-body" style="height:200px;">               
+        <table class="table table-striped table-hover table-bordered">
+          <tr>
+            <th> Employee Name </th>
+            <th> Number of days </th>      
+          </tr>
+          <% @irregular_employees.each do |data| %>
+            <tr>
+              <td><%= data.first %></td>
+              <td><%= data.last %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>

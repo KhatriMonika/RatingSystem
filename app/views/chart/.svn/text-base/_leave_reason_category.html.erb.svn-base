@@ -1,0 +1,68 @@
+<div id="leave_reason_category_chart" >
+    <% if @data.present? %>
+        <div id="container" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
+        <script>
+            $(function () {
+                var data = [];
+                var category = []
+                <% @data.each do |key,value| %>
+                    data.push(<%= value %>)
+                    category.push('<%= key %>')
+                <% end %>
+                $('#container').highcharts({
+                    chart: {
+                        type: 'column',
+                        margin: [ 50, 50, 100, 80]
+                    },
+                    title: {
+                        text: 'Leave Reason Categoty Comparison'
+                    },
+                    xAxis: {
+                        categories: category,
+                        labels: {
+                            rotation: -45,
+                            align: 'right',
+                            style: {
+                                fontSize: '13px',
+                                fontFamily: 'Verdana, sans-serif'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Number of days of leave'
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        pointFormat: '<b>{point.y} days</b>',
+                    },
+                    series: [{
+                        name: 'Leave Reason Categories',
+                        data: data,
+                        dataLabels: {
+                            enabled: true,
+                            rotation: -90,
+                            color: '#FFFFFF',
+                            align: 'right',
+                            x: 4,
+                            y: 10,
+                            style: {
+                                fontSize: '13px',
+                                fontFamily: 'Verdana, sans-serif',
+                                textShadow: '0 0 3px black'
+                            }
+                        }
+                    }]
+                });
+            });
+        </script>
+    <% else %>
+        <script type="text/javascript">
+        jQuery.gritter.add({image: '/assets/success.png',title: 'Success', text: 'No leaves on selected duration'});
+    </script>
+    <% end %>
+</div>

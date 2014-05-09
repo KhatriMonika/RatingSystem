@@ -1,0 +1,36 @@
+<div class="row well">
+  <div class="form-horizontal tasi-form col-md-12">
+    <%= form_tag most_regular_irregular_employees_chart_index_path ,:method => :get , :remote => true  do %>
+      <%= hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token) %>
+      <div class="form-group">      
+        <table align="center">
+          <tr>
+            <td><h4> <strong>Select Date &nbsp;</strong></h4></td>
+            <td width="350px"><h4>
+              <%= text_field_tag '', '', placeholder: "Select the Date", class: 'reportrange form-control input-md', value: "#{@start_date_leave} to #{@end_date_leave}" %>
+            </h4></td>
+            <td> &nbsp;
+              <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary btn-md">
+                  <input type="radio" name="options" id="option1" value="Textual"> Textual
+                </label>
+                <label class="btn btn-primary btn-md">
+                  <input type="radio" name="options" id="option2" value="Visual"> Visual
+                </label>
+                <label class="btn btn-primary btn-md">
+                  <input type="radio" name="options" id="option3" value="Both"> Both
+                </label>
+              </div>
+            </td> 
+            <%= hidden_field_tag :startdate %>
+            <%= hidden_field_tag :enddate %>
+          </tr>
+        </table>
+      </div>
+    <% end %>
+    <%= content_for :charts do %>
+      <%= render 'regular_irregular_employees' %>
+    <% end %>
+    <%= render 'regular_irregular_employees_table' %>
+  </div>
+</div>

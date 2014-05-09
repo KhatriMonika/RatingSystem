@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/Ratingsystem/!svn/ver/544/ROR/app/views/apidocument
+END
+_project_manager_list.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/Ratingsystem/!svn/ver/543/ROR/app/views/apidocument/_project_manager_list.html.erb
+END
+_top_improving_employees.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/Ratingsystem/!svn/ver/544/ROR/app/views/apidocument/_top_improving_employees.html.erb
+END
+_employee_profile.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/Ratingsystem/!svn/ver/543/ROR/app/views/apidocument/_employee_profile.html.erb
+END
+_ratings_api.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/543/ROR/app/views/apidocument/_ratings_api.html.erb
+END
+_api_sidebar.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/544/ROR/app/views/apidocument/_api_sidebar.html.erb
+END
+apihelp.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/Ratingsystem/!svn/ver/544/ROR/app/views/apidocument/apihelp.html.erb
+END
+_upcomming_birthdays.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/Ratingsystem/!svn/ver/544/ROR/app/views/apidocument/_upcomming_birthdays.html.erb
+END
+_sessions_apihelp.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/Ratingsystem/!svn/ver/544/ROR/app/views/apidocument/_sessions_apihelp.html.erb
+END
+_team_apihelp.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/Ratingsystem/!svn/ver/543/ROR/app/views/apidocument/_team_apihelp.html.erb
+END
+_factor_list.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/543/ROR/app/views/apidocument/_factor_list.html.erb
+END
+_chart_api.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/Ratingsystem/!svn/ver/544/ROR/app/views/apidocument/_chart_api.html.erb
+END

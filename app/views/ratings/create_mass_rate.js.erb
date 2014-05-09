@@ -1,0 +1,23 @@
+	$("#error").html("<%= j(render :partial => 'shared/alert_messages') %>");
+	$("#new_entries").show();
+	$("#update_entries").show();	
+	$('#new_date_value').attr('readonly', 'true');
+<% if @fetched_ratings.present? && @new_members.present? %>
+	$("#new_entries").show();
+	$("#update_entries").show();
+	$("#update_entries").html("<%= j(render :partial => 'edit_mass_rating', locals: {passed_date: @date}) %>");
+	$("#new_entries").html("<%= j(render :partial => 'mass_rating_form', locals: {passed_date: @date}) %>");
+	$("#date_table").hide();
+
+<% elsif @fetched_ratings.present? && !@new_members.present?%>
+	$("#date_table").show();
+	$("#update_entries").show();
+	$("#update_entries").html("<%= j(render :partial => 'edit_mass_rating', locals: {passed_date: @date}) %>");
+	$("#new_entries").hide();
+	
+<% elsif !@fetched_ratings.present? && @new_members.present? %>
+	$("#new_entries").show();
+	$("#new_entries").html("<%= j(render :partial => 'mass_rating_form', locals: {passed_date: @date}) %>");
+	$("#update_entries").hide();
+<% end %>
+datepicker_function();

@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/Ratingsystem/!svn/ver/498/ROR/app/views/api/v1/sessions
+END
+show.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/Ratingsystem/!svn/ver/498/ROR/app/views/api/v1/sessions/show.json.jbuilder
+END

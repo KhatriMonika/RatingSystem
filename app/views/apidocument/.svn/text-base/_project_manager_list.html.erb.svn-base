@@ -1,0 +1,54 @@
+<!-- Project Managare List Starts-->
+  <a name='PMList'/>
+	<div class="panel panel-default ">
+    <div class="panel-heading"><h3>Project Manager List</h3></div>
+    <div class="panel-body">  
+	    API URL: <br />
+    	<span id="link_PMList"><%= "#{DOMAIN_CONFIG}"+project_manager_index_api_v1_employee_index_path%></span><br/>
+	    Method: <span id="method_PMList">GET</span><br />
+			<form class="form_PMList"><br />
+		    Parameters:<br />
+			  <table width='100%' cellpadding="4" cellspacing="0" border='1' bordercolor='#808080'> 	    
+			    <thead>
+		        <tr bgcolor="#eeeeee"><td> Field name </td><td> Description </td><td>Example</td>
+		            <td>Req</td></tr>
+		        </thead>
+			    <tbody>	
+				    <tr>
+			        <td width=140>auth_token</td>
+			        <td> The auth_token of the login session of the  user </td>
+			        <td width='210'> <input id='input_PMList_token' class="form-control" name="token" class="input_PMList" size='40' onkeyup='change_PMList();' value=''> </td>
+			        <td width='30'> * </td>
+			    	</tr>
+		      </tbody>
+		    </table>
+	    </form><br/><br/>
+	    Example call <br/>
+	    <textarea id='example_PMList'  class="form-control"  style='font-family: Courier New' rows=4 cols=90><%= "#{DOMAIN_CONFIG}"+project_manager_index_api_v1_employee_index_path%>?auth_token=&</textarea>
+	    <br/>
+	    <input type='button' id='button_PMList' class="btn" onClick='example("PMList");' value='Execute'> <br/>
+	    <br/>
+	    <div id='raw_PMList' style='font-family: courier new; font-size: 10pt;'>
+	    </div>
+	    <br/>
+	    <div id='output_PMList' style='font-family: courier new; font-size: 10pt;'>
+	    </div>
+	    <br />
+	    <pre>var apiCall = "<?=Yii::app()->createUrl('<%= "#{DOMAIN_CONFIG}"+project_manager_index_api_v1_employee_index_path%>?');?>";
+	apiCall = apiCall + '&token=' + escape(valtoken);
+	$.getJSON(apiCall, function(r){
+	});
+			</pre>    
+			<a href='#top'>go to top</a>
+		</div>
+	</div><br />
+  <script type="text/javascript">
+      function change_PMList()
+      {
+          var link = '<%= "#{DOMAIN_CONFIG}"+project_manager_index_api_v1_employee_index_path%>?';
+                          link += "auth_token=" + escape($("#input_PMList_token").val()) + "&";
+                          $("#example_PMList").val(link);
+      }
+  </script>
+
+<!-- Project Managare List Ends-->

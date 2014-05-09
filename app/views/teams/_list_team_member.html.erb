@@ -1,0 +1,22 @@
+<div  class="panel-body row product-list">
+  <% @team.team_members.each do |developer| %>
+    <div class="col-md-3 informations">
+      <section class="panel">
+        <div class="pro-img-box">
+          <%= link_to employee_path(developer.slug) do %>
+            <%= image_tag developer.gravatar_url, :size => '100x120' %>
+          <% end %>
+          <%= link_to team_path(@team.slug,:info => "Remove Member",:member => developer.id), :class => "adtocart", method: :delete, :data => { :confirm => "Are you sure?" } do %>
+            <i class="fa fa-trash-o fa-lg"></i>
+          <% end %>
+        </div>
+        <div class="panel-body text-center">
+          <h4>
+            <%= developer.name.upcase %>
+          </h4>
+          <i class="fa fa-desktop"></i> : <%= developer.tech %>
+        </div>
+      </section>
+    </div>
+  <% end %>
+</div>

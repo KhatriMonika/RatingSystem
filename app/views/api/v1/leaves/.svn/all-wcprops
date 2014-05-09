@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/Ratingsystem/!svn/ver/564/ROR/app/views/api/v1/leaves
+END
+index.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/564/ROR/app/views/api/v1/leaves/index.json.jbuilder
+END
+reason_categories.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/Ratingsystem/!svn/ver/546/ROR/app/views/api/v1/leaves/reason_categories.json.jbuilder
+END

@@ -1,0 +1,207 @@
+<aside>
+  <div id="sidebar"  class="nav-collapse ">
+    <!-- sidebar menu start-->
+    <ul class="sidebar-menu" id="nav-accordion">
+      <li>
+          <%= link_to (dashboard_index_path), :class => current_page?(dashboard_index_path) ? "active" : "" do %>
+              <i class="fa fa-dashboard"></i>
+              <span>Dashboard</span>
+          <% end %>
+      </li>
+      <% if !(current_user.employee?) %>  
+        <li class="sub-menu">
+          <% if (params[:controller]  == "ratings" || params[:controller] == 'reports') %>
+            <a href="javascript:;" , class ="active">
+          <% else %>
+            <a href="javascript:;">
+          <% end %>
+            <i class=" fa fa-bar-chart-o"></i>
+            <span>Ratings</span>
+          </a>
+          <ul class="sub">
+              <li>
+                <%= link_to  (employee_rate_ratings_path), :class => current_page?(employee_rate_ratings_path) ? "active" : ""  do%>
+                  <i class="fa fa-star"></i>
+                  <span>Rate Employees</span>
+                <% end %>
+              </li>  
+            <li>
+              <%= link_to reports_path, :class => params[:controller] == 'reports' ? "active" : "" do %>
+                <i class="fa fa-table"></i>
+                <span>View Ratings</span>
+              <% end %>
+            </li>
+            
+              <li>
+                <%= link_to (ratings_import_ratings_path), :class => current_page?(ratings_import_ratings_path) ? "active" : "" do %>
+                  <i class="fa fa-archive"></i> <span>Import Ratings</span>
+                <% end %>
+              </li>
+          </ul>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to (reports_path), :class => params[:controller] == 'reports' ? "active" : "" do %>
+              <i class="fa fa-table"></i>
+              <span>View Ratings</span>
+          <% end %>
+      </li>
+      <% end %>         
+
+      <% if !(current_user.employee?) %>
+        <li>
+          <%= link_to (employee_index_path), :class => params[:controller] == 'employee' ? "active" : "" do %>
+            <i class="fa fa-th-list"></i>
+            <span>Employees List</span>
+          <% end %>
+        </li>
+      <% end %>
+      <li class="sub-menu">
+        <% if (params[:controller]  == "chart") %>
+         <a href="javascript:;" , class ="active">
+        <% else %>
+          <a href="javascript:;">
+        <% end %>
+          <i class=" fa fa-bar-chart-o"></i>
+          <span>Charts</span>
+        </a>
+        <ul class="sub">
+          <% if !(current_user.employee?) %>          
+           
+            <li>
+              <%= link_to (overall_employee_impression_chart_index_path), :class => current_page?(overall_employee_impression_chart_index_path) do %>
+                <i class="fa fa-bars"></i>
+                <span>Overall Performance</span>
+              <% end %>
+            </li>
+          <% end %>
+
+          <li>
+            <%= link_to (line_chart_chart_index_path), :class => current_page?(line_chart_chart_index_path) do %>
+              <i class="fa fa-bars"></i>
+              <span>Date Wise Line chart</span>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to (top_improving_degrading_employees_chart_index_path), :class => current_page?(top_improving_degrading_employees_chart_index_path) ? "active" : "" do %>
+              <i class="fa fa-bars"></i>
+              <span>Top Employees Analysis</span>
+            <% end %>
+          </li>
+          <li class="sub-menu">
+              <% if current_page?(leaves_pie_chart_index_path) || current_page?(leave_reason_category_comparison_chart_index_path) || current_page?(most_regular_irregular_employees_chart_index_path) %>
+               <a href="javascript:;" , class ="active">
+              <% else %>
+                <a href="javascript:;">
+              <% end %>
+                <i class=" fa fa-pagelines"></i>
+                <span>Leaves</span>
+              </a>
+              <ul class="sub">
+                  <li>
+                    <%= link_to (leaves_pie_chart_index_path), :class => current_page?(leaves_pie_chart_index_path) ? "active" : "" do %>
+                      <i class="fa fa-bars"></i>
+                      <span>Pie Chart</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to (most_regular_irregular_employees_chart_index_path), :class => current_page?(most_regular_irregular_employees_chart_index_path) ? "active" : "" do %>
+                      <i class="fa fa-bars"></i>
+                      <span>Regular&Irregular</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to (leave_reason_category_comparison_chart_index_path), :class => current_page?(leave_reason_category_comparison_chart_index_path) ? "active" : "" do %>
+                      <i class="fa fa-bars"></i>
+                      <span>Reason Category</span>
+                    <% end %>
+                  </li>
+              </ul>
+          </li>         
+        </ul>
+      </li>
+     
+      <% if current_user.admin? %>
+        <li class="sub-menu">
+          <% if (params[:controller]  == "teams") %>
+           <a href="javascript:;" , class ="active">
+          <% else %>
+            <a href="javascript:;">
+          <% end %>
+            <i class="fa fa-users"></i>
+            <span>Teams</span>
+          </a>
+          <ul class="sub">
+            <li>
+              <%= link_to teams_path, :class => current_page?(teams_path) ? "active" : "" do %>
+                <i class="fa fa-th-list"></i>
+                <span>List</span>
+              <% end %>
+            </li>
+           
+            <li>
+              <%= link_to (new_team_path), :class => current_page?(new_team_path) ? "active" : "" do %>
+                <i class="fa fa-plus"></i>
+                <span>New Team</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to (unallocated_members_teams_path), :class => current_page?(unallocated_members_teams_path) ? "active" : "" do %>
+                <i class="fa fa-question"></i>
+                <span>Unallocated Members</span>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+
+        <li class="sub-menu">
+          <% if params[:controller] == 'factors' || params[:controller] == 'technologies' || params[:controller] == 'leave_reason_category'%>
+            <a href="javascript:;" class="active">
+          <% else %>
+            <a href="javascript:;" >
+          <% end %>
+            <i class="fa fa-glass"></i>
+            <span>More</span>
+          </a>
+
+          <ul class="sub">
+           <li>
+            <%= link_to (new_factor_path), :class => params[:controller] == 'factors' ? "active" : "" do %>
+              <i class="fa fa-plus-square"></i> <span>Factor</span>
+            <% end %>
+            </li>
+            <li>
+              <%= link_to (new_technology_path), :class => params[:controller] == 'technologies' ? "active" : "" do %>
+                <i class="fa fa-plus-square"></i> <span>Technology</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to (new_leave_reason_category_path), :class => current_page?(new_leave_reason_category_path) ? "active" : "" do %>
+                <i class="fa fa-plus-square"></i>
+                <span>Leave Reason Category</span>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+      <li>
+        <%= link_to (leaves_path), :class => current_page?(new_leafe_path) ? "active" : "" do %>
+            <i class="fa fa-pagelines"></i>
+            <span>Leaves</span>
+            <% if @count > 0 %>
+              <span class="label label-danger pull-right mail-info">
+                <%= @count %>
+              </span>
+            <% end %>
+          <% end %>
+      </li>
+      <li>
+        <%= link_to (events_path), :class => current_page?(events_path) ? "active" : "" do %>
+              <i class="fa fa-calendar"></i>
+              <span>Events</span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</aside>

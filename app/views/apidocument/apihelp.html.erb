@@ -1,0 +1,23 @@
+<% provide(:title, 'API Help') %>
+<%= javascript_include_tag "api_from_demo" %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %> 
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= render 'api_sidebar' %>
+<div class="container">
+  	<section id="main-content">
+    	<section class="wrapper">
+      	<div class="row state-overview">
+      		<a name='top'/>
+    				<%= render 'sessions_apihelp' %>
+    				<%= render 'employee_profile' %>
+            <%= render 'upcomming_birthdays' %>
+    				<%= render 'project_manager_list' %>
+    				<%= render 'ratings_api' %>
+    				<%= render 'team_apihelp' %>   
+    				<%= render 'factor_list' %> 
+    				<%= render 'chart_api' %>
+
+    		</div>
+		</section>
+   </section>
+</div>

@@ -1,0 +1,9 @@
+<% provide(:title, 'Mass Rating Assignment') %>
+<div class="well">
+  <div id="new_entries">
+  	<%= render partial: 'mass_rating_form', locals: {passed_date: @date } %>
+  </div>
+  <div id="update_entries">
+  	<%= render partial: 'edit_mass_rating', locals: {passed_date: @date } %>
+  </div>
+</div>

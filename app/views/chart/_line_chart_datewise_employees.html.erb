@@ -1,0 +1,67 @@
+
+<% if @ratings.present? %>
+<div id="container" >
+<script type="text/javascript">
+
+  var seriesdata = []
+  <% @ratings.each do |name, value| %>
+    var data = []
+    <% value.each do |rating| %>
+      <% if rating.rating_date.present? %>
+      //  push the date and total rating into the graph 
+        data.push([Date.UTC(<%= rating.rating_date.year %>, <%= rating.rating_date.month - 1 %>, <%= rating.rating_date.day %>),<%= rating.total_rating %>]  )
+      <% end %>  
+    <% end %>
+    seriesdata.push({name: "<%= name %>", data: data});
+  <% end %>
+  $(function () 
+  {
+
+    $('#container').highcharts(
+    {
+      chart:
+      {
+        type: 'spline',
+        height: 600
+      },
+      title:
+      {
+        text: 'Datewise Total Rating'
+      },
+      subtitle: 
+      {
+          text: 'Accurate:<%= @start_date %> to <%= @end_date %>'
+      },
+      xAxis:
+      {
+        type: 'datetime',
+        dateTimeLabelFormats:
+        { 
+            month: '%e of %b',
+            year: '%b'
+        }
+      },
+      yAxis: 
+      {
+        title: 
+        {
+            text: 'Total Rating (Points)'
+        }
+      },
+      tooltip: 
+      {
+        formatter: function()
+        {
+          return '<center><b>'+ this.series.name +'</b></center><br/>'+ Highcharts.dateFormat('%e of %b', this.x) +':: '+ this.y +' Points';
+        }
+      },               
+      series:  seriesdata,
+    });
+  });
+</script>
+</div> 
+<% else %> 
+ <script type="text/javascript">
+  jQuery.gritter.add({image: '/assets/error.png',title: 'Error', text: 'No Ratings Available for selected date..!'});
+ </script>
+<% end %>

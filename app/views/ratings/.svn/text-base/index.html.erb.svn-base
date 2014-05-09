@@ -1,0 +1,3 @@
+<% provide(:title, 'View Rating') %>
+<%= render "shared/profile_sidebar" %>
+<%= render "shared/rating_side_bar" %>

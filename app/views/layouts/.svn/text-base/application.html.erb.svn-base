@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">google.load('jquery', '1.5');</script>
+    <%= csrf_meta_tags %>
+    <noscript>
+      <meta http-equiv="refresh" content="2;url=<%= DOMAIN_CONFIG %>/nojswarning.html">
+    </noscript> 
+  </head>
+  <body>
+  <%= render "/layouts/dashboard/header" %>
+  <%= render "/layouts/dashboard/sidebar" %>
+  <link href="/assets/favicon.ico" rel="shortcut icon" />
+  <section id="main-content">
+    <section class="wrapper">
+      <div class="row state-overview">
+        <div id="error">
+          <%= render 'shared/alert_messages' %>
+          <%= gflash %>          
+        </div>                       
+          <%= yield %>   
+          <%= javascript_include_tag "application", "data-turbolinks-track" => true %> 
+          <% if params[:controller].to_s == "chart" || params[:controller].to_s == "dashboard" %>
+            <%= yield :charts %>         
+          <% end %>
+      </div>
+      </section>
+    </section>
+  </body>
+</html>

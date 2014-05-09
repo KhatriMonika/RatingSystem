@@ -1,0 +1,32 @@
+<div class="row state-overview well">
+  <aside class="profile-info col-lg-12">
+    <div class="form-group form_control">
+      <div class="panel">
+        <div class="panel-heading"><span>
+          <h3><i class="fa fa-question-circle"></i> </span> Unallocated Members</h3>
+        </div>
+        <div class="panel-body">
+          <div class="well row product-list">
+            <% @unallocated_members.each do |developer| %>
+              <div class="col-md-2">
+                <section class="panel">
+                  <div class="pro-img-box">
+                    <%= link_to employee_path(developer.slug) do %>
+                      <%= image_tag developer.gravatar_url, :size => '100x120' %>
+                    <% end %>
+                  </div>
+                  <div class="panel-body text-center">
+                    <h4>
+                      <%= developer.name.upcase %>
+                    </h4>
+                    <i class="fa  fa-desktop"></i> : <%= developer.tech %>
+                  </div>
+                </section>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>

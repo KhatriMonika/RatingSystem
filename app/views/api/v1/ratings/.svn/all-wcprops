@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/Ratingsystem/!svn/ver/543/ROR/app/views/api/v1/ratings
+END
+show.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/543/ROR/app/views/api/v1/ratings/show.json.jbuilder
+END
+_ratings.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/Ratingsystem/!svn/ver/543/ROR/app/views/api/v1/ratings/_ratings.json.jbuilder
+END
+index.json.jbuilder
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/Ratingsystem/!svn/ver/543/ROR/app/views/api/v1/ratings/index.json.jbuilder
+END

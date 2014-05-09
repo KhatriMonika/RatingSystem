@@ -1,0 +1,100 @@
+<% if @details.present? %>
+<div id="leave_report" class="col-lg-12">
+<hr>
+<div class="well">               
+  <table class="table table-striped table-hover table-bordered">
+    <tr>
+      <th rowspan="2">Show/hide</th><th rowspan="2"> Employee Name</th>
+      <% if @status.present? %>
+        <% @status.each do |status| %>
+          <th colspan="<%= @reason_category.length if @reason_category.present? %>"><%= Leave::STATUS[status.to_i] %></th>
+        <% end %>
+      <% end %>
+      <% count = (4 - (@status.length * @reason_category.length)) %>
+      <th rowspan="2" colspan="<%= count > 0 ? count : "0" %>">Total</th>
+    </tr>
+    <tr>
+      <% if @status.present? %>
+        <% @status.each do |status| %>
+          <% if @reason_category.present? %>
+            <% @reason_category.each do |category| %>
+              <th><%= category.name %></th>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tr>
+    <% if @details.present? %>
+      <% @details.each do |key,value| %>
+      <% total = 0 %>
+        <tr>
+          <td class="col-sm-1 control-label testing" align="center" name="details_<%= key.gsub(" ","_") %>"><button class="btn btn-xs btn-info" onclick="$('.target_<%= key.gsub(" ","_") %>').toggle();">&nbsp;<i class="fa fa-info">&nbsp;</i></button></td>
+          <td><%=  key %></td>
+          <% if value.present? %>
+            <% @status.each do |status| %>
+              <% v = value.group_by(&:status)[status.to_i] %>
+              <% if v.present? %>
+                <% @reason_category.each do |category| %>
+                  <% if v.group_by(&:category)[category.name].present? %>
+                    <% sub_total = 0 %>
+                    <% v.group_by(&:category)[category.name].each do |cat_value| %>
+                      <% sub_total = sub_total + cat_value.options.split(",").length %>
+                      <% total = total + cat_value.options.split(",").length %>
+                    <% end %>
+                    <td><%= sub_total %></td>
+                  <% else %>
+                    <td>0</td>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <% @reason_category.each do |category| %>
+                  <td>0</td>
+                <% end %>
+              <% end %>
+            <% end %>
+            <td colspan="<%= count > 0 ? count : "0" %>"><%= total %></td>
+          <% else %>
+            <% if @status.present? %>
+              <% @status.each do |status| %>
+                <% if @reason_category.present? %>
+                  <% @reason_category.each do |category| %>
+                    <td>0</td>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+            <td>0</td>
+          <% end %>
+        </tr>
+        <tr class="target_<%= key.gsub(" ","_") %> load">
+            <th>From</th>
+            <th>Till</th>
+            <th>Number of Days</th>
+            <th>Status</th>
+            <th>Category</th>
+            <% count = ((@status.length * @reason_category.length) - 2) %>
+            <th colspan="<%= count > 0 ? count : "0" %>">Reason</th>
+          <% value.each do |v| %>
+            <tr class="target_<%= key.gsub(" ","_") %> load">
+              <td><%= v.date_from %></td>
+              <td><%= v.date_till %></td>
+              <td><%= v.options.split(",").length %></td>
+              <td><%= Leave::STATUS[v.status.to_i] %></td>
+              <td><%= v.category %></td>
+              <td class="break-me" style="width: 200px;" colspan="<%= count > 0 ? count : "0" %>"><%= v.reason %></td>
+            </tr>
+          <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+</div>
+<script type="text/javascript">  
+  $('.load').toggle();
+</script>
+<% else %>
+  <script type="text/javascript">
+    jQuery.gritter.add({image: '/assets/error.png',title: 'Error', text: 'No Leaves Available for selected date..!'});
+  </script>
+<% end %>

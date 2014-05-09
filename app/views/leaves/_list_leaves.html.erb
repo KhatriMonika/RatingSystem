@@ -1,0 +1,51 @@
+<section class="panel">
+    <div class="panel-body" style="display: block; ">
+        <div class="timeline-messages">
+          <% if leaves.present? %>
+            <% leaves.each do |l| %>
+            <div class="msg-time-chat">
+                <a href="#" class="message-img break-me"><%= image_tag l.employee.gravatar_url, :size => '100x120', :class => "avatar" %>
+                  <center>
+                    <%= l.employee.name == current_user.name ? "me" : l.employee.name.split(" ").first %>
+                  </center>
+                </a>
+                <div class="message-body msg-in break-me">
+                    <span class="arrow"></span>
+                    <div class="text">
+                      <div>
+                        <p class="attribution"><span class="badge badge-sm label-<%= @status_classes[l.status]%>"><%= l.status_name %></span>   <%= l.created_at.to_time.strftime('%B %e at %l:%M %p') %>
+                          <div class="pull-right">
+                            <button class="btn btn-success btn-xs fa fa-check" data-toggle="modal" data-target="#show<%= l.id %>"></button>
+                            <% if !(l.canceled?) && current_user.id == l.employee_id && (l.reviewed? || l.not_reviewed? || l.draft?) && !(l.past_leave?) %>
+                              <%= link_to '', edit_leafe_path(l.id), :class => "btn btn-primary btn-xs fa fa-pencil" %>
+                            <% elsif !(l.canceled?) && current_user.id != l.employee_id && !(l.past_leave?) %>
+                              <%= link_to '', edit_leafe_path(l.id), :class => "btn btn-primary btn-xs fa fa-pencil" %>
+                            <% else %>
+                              <%= link_to '', edit_leafe_path(l.id), :class => "btn btn-default btn-xs fa fa-pencil", :disabled => "disabled" %>
+                            <% end %>
+                            <% if l.employee_id == current_user.id %>
+                              <% if !(l.not_sanctioned?) && !(l.canceled?) && !(l.past_leave?) %>
+                                <%= link_to '', l, method: :delete, data: { confirm: 'Are you sure, to cancel leave application?' } , :class => "btn btn-danger btn-xs fa fa-trash-o" %>
+                              <% else %>
+                                <%= link_to '', l, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-default btn-xs fa fa-trash-o", :disabled => "disabled" %>
+                              <% end %>
+                            <% end %>
+                          </div>
+                        </p>
+                      </div>
+                        <p><span class="badge" style="background-color: <%= l.leave_reason_category.colour %>;"><%= l.leave_reason_category.name %></span>  <%= l.reason_of_leave %></p>
+                    </div>
+                </div>
+                <%= render :partial => 'show_leave', locals: {l: l} %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+</section>
+
+
+
+<ul id="sortable" class="task-list ui-sortable">
+  
+</ul>

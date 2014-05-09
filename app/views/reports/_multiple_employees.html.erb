@@ -1,0 +1,101 @@
+
+<%#= link_to 'Export XLS', reports_path(:startdate => params[:startdate], :enddate => params[:enddate],:factor_id => params[:factor_id],:employees => params[:employees],format: :xls), :method => :post , :class => "btn btn-default" %>
+                             
+<%= link_to 'Export XLSX', reports_export_path(:startdate => params[:startdate], :enddate => params[:enddate],:factor_id => params[:factor_id],:employees => params[:employees]), :method => :post , :class => "btn btn-default" %>
+<% if @selected_factors.present? %>
+	<% @rating_details.each do |key,value| %>
+		<section class="panel">
+			<header class="panel-heading">
+	      		<h3>Date : <%= key %></h3>
+	    	</header>
+	    <div class="panel-body">
+	    	<% temp_for_active_factor = @rating_details[key].group_by(&:emp_name).first.second %>
+	    	<% flag = true %>
+	    	<% if temp_for_active_factor.length != @selected_factors.length %>
+	    		<% flag = false %>
+	    		<% factor_ids = Array.new %>
+				<% temp_for_active_factor.each do |detail| %>
+					<% factor_ids << detail.factor_id %>
+				<% end %>
+				<% factors_for_this_date = @selected_factors.where(id: factor_ids) %>
+				<div class="alert alert-success alert-dismissable">
+					<strong>Following factor/s were not present on <%= key %> date</strong>
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+					</button>
+					<ul>
+						<% (@selected_factors - factors_for_this_date).each do |deactive_factor| %>
+					 		<li><%= deactive_factor.name %></li>
+					 	<% end %>
+					</ul>
+				</div>
+	    	<% end %>
+	  		<div class="adv-table">
+	      		<table  class="display table table-bordered table-striped example">
+	        		<thead>
+						<tr>
+							<th>Name</th>
+							<% if flag %>
+								<% @selected_factors.each do |factor| %>
+									<th><%= factor.name %></th>
+								<% end %>
+							<% else %>
+								<% factors_for_this_date.each do |factor| %>
+									<th><%= factor.name %></th>
+								<% end %>
+							<% end %>
+							<th>Total Rating</th>
+							<th>Remarks</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% $i = 1 %>
+		    		<% value.group_by(&:emp_name).each do |name,v| %>
+				      <tr class="<%= (($i%2) == 1) ? "gradeX odd" : "gradeX even"%>">
+		      			<th><%= name %></th>
+							  <% v.each do |factor| %>
+			    				<td><%= factor.rating_value %></td>
+			   				<% end %>
+			    			<td><%= v.last.total_rating %></td>
+			    			<td><%= v.last.remark %></td>		
+		    			</tr>
+		    			<% $i = $i + 1 %>
+		    		<% end %>
+		    		</tbody>
+	    		</table>
+	    	</div>
+	  	</div>
+	  </section>
+	<% end %>
+<% else %>
+	<% @rating_details.each do |date, value| %>
+		<section class="panel">
+	    <header class="panel-heading">
+        	<h3>Date : <%= date %></h3>
+      	</header>
+    	<div class="panel-body">
+  			<div class="adv-table">
+      		<table  class="display table table-bordered table-striped example">
+        		<thead>
+							<tr>
+								<th>Name</th>
+								<th>Total Rating</th>
+								<th>Remarks</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% $i = 1 %>
+		    			<% value.each do |v| %>
+				       	<tr class="<%= (($i%2) == 1) ? "gradeX odd" : "gradeX even"%>">
+		      				<td><%= v.emp_name %></td>
+		      				<td><%= v.total_rating %></td>
+		      				<td><%= v.remark %></td>		
+		    				</tr>
+		    				<% $i = $i + 1 %>
+		    			<% end %>
+	    			</tbody>
+    			</table>
+    		</div>
+  		</div>
+  	</section>
+  <% end %>
+<% end %>

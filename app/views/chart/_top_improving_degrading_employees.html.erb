@@ -1,0 +1,94 @@
+<div class="row col-lg-12">
+  <div class="col-md-6 pull-left">
+    <div class="well">
+      <div id="container" style="min-width: 410px; max-width: 600px; height: auto; margin: 0 auto">
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 pull-right">
+    <div class="well">    
+      <div id="deg_container" style="min-width: 200px; max-width: 600px; height: auto; margin: 0 auto" align="left">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Improving Employees Chart -->
+
+  <script type="text/javascript">
+    var top_five =[];       
+    <% @top_five_data.each do |data| %>
+       top_five.push(['<%= data.first %>',<%= data.last %>])
+    <% end %>
+    $(function () {
+      
+      $('#container').highcharts({
+          chart: {
+              type: 'funnel',
+              marginRight: 100
+          },
+          title: {
+              text: 'Top Five Improving Employees',
+              x: -50
+          },
+
+          plotOptions: {
+              series: {
+                  dataLabels: {
+                      enabled: true,
+                      format: '<b>{point.name}</b> <br>({point.y:,.0f})',
+                      color: 'black',
+                      softConnector: true
+                  }
+              }
+          },
+          legend: {
+              enabled: false
+          },
+          series: [{
+              name: 'Average Total Rating',
+              data: top_five
+          }]
+      });
+    });
+  </script>
+
+
+<!-- Degrading Employees Chart -->
+
+  <script type="text/javascript">
+    var last_five =[];       
+    <% @last_five_data.each do |data| %>
+       last_five.push(['<%= data.first %>',<%= data.last %>])
+    <% end %>
+    $(function () {
+      
+      $('#deg_container').highcharts({
+          chart: {
+              type: 'pyramid',
+              marginRight: 100
+          },
+          title: {
+              text: 'Top Five Degrading Employees',
+              x: -50
+          },         
+          plotOptions: {
+              series: {
+                  dataLabels: {
+                      enabled: true,
+                      format: '<b>{point.name}</b><br> ({point.y:,.0f})',
+                      color: 'black',
+                      softConnector: true
+                  }
+              }
+          },
+          legend: {
+              enabled: false
+          },
+          series: [{
+              name: 'Average Total Rating',
+              data: last_five
+          }]
+      });
+    });
+  </script>

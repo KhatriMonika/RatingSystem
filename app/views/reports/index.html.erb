@@ -1,0 +1,47 @@
+<% provide(:title, 'View Rating') %>
+<div class="row well">
+  <div class="form-horizontal tasi-form col-md-12" id="report-form">
+    <%= form_tag @reports_path ,:method => :get, :remote => true do %>
+      <%= hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token) %>
+      <div class="form-group">
+        <%= label_tag '','Date' , :class => "control-label col-sm-4"%> 
+        <div class="col-md-5">
+          <%= text_field_tag :date, Date.today - 1, placeholder: "Select the Date",class: 'reportrange form-control', style: "border: 1px solid #22BACF !important; width: 370px !important;"  %>
+          <%= hidden_field_tag :startdate,"", :id => "startdate"%>
+          <%= hidden_field_tag :enddate,"", :id => "enddate" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <%= label_tag '','Factors' , :class => "control-label"%><br><br>
+          <div class="my-select">
+            <%= select_tag :factor_id, options_from_collection_for_select(Factor.all, "id", "name"), :id => "factor_id_reports", :multiple => true %>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <% if !(current_user.employee?) %>
+            <%= label_tag '','Employees' , :class => "control-label"%><br><br>
+            <div class="my-select">
+              <%= select_tag :employees, grouped_options_for_select(@all_employees), :multiple => true,:id => "employee_id" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<h3>
+</h3>
+<br>
+<div id="report" class="col-md-12">
+  <% if @rating_details.present? %>
+    <center>
+      <% if (@selected_employees.length == 1) %>
+        <%= render 'single_employee' %>
+      <% else %>
+        <%= render 'multiple_employees' %>
+      <% end %>
+    </center>
+  <% end %>
+</div>

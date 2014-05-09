@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/Ratingsystem/!svn/ver/570/ROR/app/views/dashboard
+END
+_guage_rating.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/Ratingsystem/!svn/ver/557/ROR/app/views/dashboard/_guage_rating.html.erb
+END
+_top_employees.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/544/ROR/app/views/dashboard/_top_employees.html.erb
+END
+_upcomming_birthdays.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/Ratingsystem/!svn/ver/557/ROR/app/views/dashboard/_upcomming_birthdays.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/Ratingsystem/!svn/ver/570/ROR/app/views/dashboard/index.html.erb
+END
+_notifications.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/570/ROR/app/views/dashboard/_notifications.html.erb
+END

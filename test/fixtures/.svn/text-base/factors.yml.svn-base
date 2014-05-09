@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: factors
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  active     :boolean          default(TRUE)
+#
+# Indexes
+#
+#  index_factors_on_id_and_name  (id,name)
+#  index_factors_on_name         (name)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  possible_values: MyString
+
+two:
+  name: MyString
+  possible_values: MyString

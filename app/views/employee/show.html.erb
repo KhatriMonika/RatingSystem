@@ -1,0 +1,54 @@
+c<% provide(:title, 'Profile') %>
+<%= render :partial => "shared/profile_sidebar" %>
+  <aside class="profile-info col-lg-9">
+    <section class="panel">
+      <div class="bio-graph-heading">
+              <h3>Employee Profile</h3>
+      </div>
+      
+      <div class="panel-body bio-graph-info">
+ 
+        <div class="row">
+          <div class="bio-row"><p><b>Joining Date </b>: <%= @employee.joining_date.present? ? @employee.joining_date : "Not Present" %></p>
+        </div>
+          
+        <div class="bio-row">
+          <p><b>Team </b>: <% if @employee.team_id.present? %>
+            <%= Team.find(@employee.team_id).name %>
+            <% else %>
+            <b>Unallocated</b>
+            <% end %>
+          </p>
+        </div>
+          
+        <div class="bio-row">
+          <p><b>BirthDate </b>: <%= @employee.birthdate.present? ? @employee.birthdate : "Not Present" %></p>
+        </div>
+        
+        <div class="bio-row">
+          <p><b>Role </b>: <%= @employee.role.upcase %></p>
+        </div>
+        <div class="bio-row">
+          <p>
+            <div class="row">
+              <div class="col-sm-3">
+                <b>Technologies:</b>
+              </div>
+              <div class="col-sm-9">
+                <% if @employee.known_technology_id.present? %>
+                  <% @employee.known_technologies.each do |tech| %>
+                    <b class="badge badge-sm <%= tech == @employee.tech ? "label-success" : "label-info"%>"><%= tech %></b>
+                  <% end %>
+                <% elsif @employee.technology_id.present? %>
+                  <b class="badge badge-sm label-info"><%= @employee.tech %></b>
+                <% else %>
+                  Unallocated
+                <% end %>
+              </div>
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</aside>

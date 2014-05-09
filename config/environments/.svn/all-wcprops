@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/Ratingsystem/!svn/ver/570/ROR/config/environments
+END
+test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/Ratingsystem/!svn/ver/498/ROR/config/environments/test.rb
+END
+development.rb
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/Ratingsystem/!svn/ver/570/ROR/config/environments/development.rb
+END
+production.rb
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/Ratingsystem/!svn/ver/570/ROR/config/environments/production.rb
+END

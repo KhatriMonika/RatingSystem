@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/Ratingsystem/!svn/ver/570/ROR/lib
+END
+background_job.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/Ratingsystem/!svn/ver/498/ROR/lib/background_job.rb
+END
+client_builder.rb
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/Ratingsystem/!svn/ver/541/ROR/lib/client_builder.rb
+END
+google_calendar.rb
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/Ratingsystem/!svn/ver/515/ROR/lib/google_calendar.rb
+END

@@ -1,0 +1,37 @@
+<% provide(:title, 'Employee Settings') %>
+<div class="well col-md-10">
+  <section class="panel ">
+  <div class="panel-heading">
+    <span><h3><i class="fa fa-wrench fa-lg"></i> </span> Employee Settings</h3>    
+  </div>
+  <div class="panel-body">
+    <div class="form-horizontal tasi-form col-md-8">
+      <%= form_for( @employee, method: :post, :url => configure_employee_index_path ,:html => { :multipart => true}) do |f| %>
+        <div class="form-group">
+          <%= f.label :Name, :class => "col-sm-4  control-label" %> 
+          <div class="col-sm-2 col-md-5">
+            <%= f.text_field :name, :autofocus => true, :class => "form-control " %>
+          </div>
+        </div>
+
+        <% if current_user.admin? %>
+          <div class="form-group">
+            <%= f.label :Role, :class => "col-sm-4  control-label" %> 
+            <div class="col-sm-2 col-md-5">
+              <%= f.select :role_id, Role::ROLES.collect {|role| [role,Role::ROLES.index(role)]},  :class => "form-control bound-s", :prompt => "Select Role" %>
+            </div>
+          </div>
+        <% end %>
+        
+        <div class="form-group">
+          <%= f.label "Primary Technology", :class => "col-sm-4  control-label" %> 
+          <div class="col-sm-2 col-md-5 ">
+            <%= f.select :technology_id, (Technology.all.collect {|tech| [tech.name, tech.id]}), :prompt => "Select Technology", :class => "form-control bound-s" %>
+          </div>
+        </div>
+        
+        <%= f.submit "Update", :class => "btn btn-success" %>&nbsp;<%= link_to "Cancel", employee_index_path ,:class => "btn btn-info"  %>
+      <% end %>
+    </div>
+  </div>
+</div>

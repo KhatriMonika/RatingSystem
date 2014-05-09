@@ -1,0 +1,25 @@
+<div class="form-group form_control">
+	<div class="panel">
+		<div class="panel-heading"><span>
+      <h3><i class="fa fa-list-ul"></i> </span> List of Technologies</h3>
+    </div>
+		<div class="panel-body">
+			<table class="table table-striped table-hover table-bordered">
+				<th> Names</th><th>Action</th>
+				<% Technology.all.each do |tech| %>
+					<tr>
+						<td class="col-sm-4  control-label"><h5><%= tech.name %></h5></td>
+						<td  class="col-sm-2">
+              <%= link_to edit_technology_path(tech.id), :class => "btn btn-xs btn-warning", :remote => true do %>
+                <i class="fa fa-edit"></i>
+              <% end %>
+              <%= link_to technology_path(tech.id), :class => "btn btn-xs btn-danger", method: :delete, :data => { :confirm => "Are you sure?" } do %>
+                <i class="fa fa-trash-o fa-lg"></i>
+              <% end %> 
+						</td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>

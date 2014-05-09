@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Hi, Greetings...!!</h3>
+    <p>
+      This is to Inform you that Following Project Managers have not provided Rating.
+      <table>
+        <thead>
+          <th>Project Manager</th>
+          <th> &nbsp;Last Rated On</th>
+          <th>&nbsp; Pending Days</th>
+        </thead>        
+        <tbody>
+        <% @details.keys.each do |detail| %>
+          <tr>
+            <td><%= Employee.find(detail).name %></td>
+            <td><%= @details[detail].first.LastRDate %></td>
+            <td><%= (Date.today - @details[detail].first.LastRDate).to_i %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </p>    
+  </body>
+</html>

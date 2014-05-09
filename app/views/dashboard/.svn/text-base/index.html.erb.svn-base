@@ -1,0 +1,111 @@
+<script src="/assets/dashboard/gauge.js" type="text/javascript"></script>
+<section class="well">
+  <div class="row">
+  <!-- Gauge and Birthday Widgets start -->
+    <table>
+      <tr>
+        <td><%= render 'guage_rating' %></td>
+         <aside class="col-lg-6 pull-right">
+          <section class="panel">
+            <div class="panel-body">
+              <div id="dashboard_calendar" class="has-toolbar">
+              </div>
+            </div>
+          </section>
+        </aside>
+        <td><%= render 'upcomming_birthdays' %></td>
+      </tr>
+    </table>
+  <!-- Gauge and Birthday Widgets end -->
+
+  <!-- Top Employees start -->    
+    <% if @topratings.present? %>
+      <%= content_for :charts do %>
+        <div class="panel">
+          <header class="panel-heading">
+              Employee Performance Between Date <%= @start_date.strftime("%dth %B %Y") %> - <%= @end_date.strftime("%dth %B %Y") %>
+          </header>
+          <div class="panel-body">
+            <%= render 'top_employees' %>
+          </div>     
+        </div>
+      <% end %>
+    <% end %>
+  <!--Top Employees end-->
+
+  <!--Alerts start-->
+    <% if !current_user.employee? %>
+      <div>
+        <%= render 'notifications' %>
+    <% end %>
+    <% if @irregular_employees.present? %>
+      <%= content_for :charts do %>
+        <div class="panel">
+          <header class="panel-heading">
+              Employee Regularity Between Date <%= @start_date_leave.strftime("%dth %B %Y") %> - <%= @end_date_leave.strftime("%dth %B %Y") %>
+          </header>
+          <div class="panel-body">
+            <%= render 'chart/regular_irregular_employees' %>
+          </div>     
+        </div>
+      <% end %>
+    <% end %>
+    <div>
+    <% if @leaves_d.present? %>
+      <div class="col-md-6">
+          <!--Leave start-->
+          <section class="panel">
+              <header class="panel-heading">
+                  Upcoming Leaves <span class="tools pull-right">
+                  <a href="javascript:;" class="fa fa-chevron-down"></a>
+                  <a href="javascript:;" class="fa fa-times"></a>
+                  </span>
+              </header>
+              <div class="panel-body" style="display: block; ">
+                  <% @leaves_d.each do |leave| %>
+                    <div class="alert <%= cycle('alert-info', 'alert-danger','alert-success','alert-warning') -%>">
+                        <span class="alert-icon"><%= image_tag leave.employee.gravatar_url %></span>
+                        <div class="notification-info">
+                            <ul class="clearfix notification-meta">
+                                <li class="pull-left notification-sender">
+                                  <span>
+                                    <%= link_to "#{leave.leave_required_from} to #{leave.leave_required_to}"%>
+                                  </span>
+                                </li>
+                                <li class="pull-right notification-time"><%= leave.created_at.to_time.strftime('%B %e at %l:%M %p') %></li>
+                            </ul>
+                            <p>
+                              <%= leave.reason_of_leave %>
+                            </p>
+                        </div>
+                    </div>
+                  <% end %>
+              </div>
+          </section>
+          <!--Leave end-->
+      </div>
+    <% end %>
+  <!--Alerts end-->
+
+  <!--Leaves start-->
+    <div>
+      <% if @leaves_d.present? %>
+        <div class="col-md-6">
+          <%= render 'upcomming_leaves' %>
+        </div>
+      <% end %>
+    </div>    
+  <!--Leaves end-->  
+    
+  <!-- Calendar widget starts -->
+   <aside class="col-lg-7" style="heigth: 200px">
+    <section class="panel">
+      <div class="panel-body">
+        <div id="dashboard_calendar" class="has-toolbar">
+        </div>
+      </div>
+    </section>
+  </aside>
+  <!-- Calendar widget ends -->
+ </div> 
+</section>

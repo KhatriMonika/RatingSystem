@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>New Factor is added</h1>
+    <p>
+      your email is: <%= @user.email %>.<br>
+    </p>
+    <p>
+      <%= @factor.name %> will be applied to Employee Rating by Tommorrow onwards,
+      <br>Thank you and have a great day!
+    </p>
+  </body>
+</html>

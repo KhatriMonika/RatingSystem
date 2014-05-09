@@ -1,0 +1,28 @@
+<% provide(:title, 'Overall Employee Impression Chart') %>
+<div class="row well">
+<div class="form-horizontal tasi-form col-md-12">
+  <%= form_tag @chart_overall_employee_impression_path ,:method => :get , :remote => true  do %>
+  <%= hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token) %>
+    <div class="form-group">      
+    <table align="center">
+      <tr> 
+        <td><h4>
+          <%= select_tag :project_manager_id, options_from_collection_for_select(Team.select(:project_manager_id,:name) , "project_manager_id", "name" ) %>
+        </h4></td>
+        <td><h4>
+          <%= text_field_tag '', '', placeholder: "Select the Date",class: 'reportrange form-control input-lg ', value: @start_date + ' to '+@end_date  %>
+        </h4></td> 
+        <%= hidden_field_tag :startdate %>
+        <%= hidden_field_tag :enddate %>
+      </tr>
+    </table>
+    </div>
+  <% end %>
+  <%= content_for :charts do %>
+    <div id="stackbarchart_overall">
+      <%= render 'overall_employee_impression' %>
+    </div>
+  <% end %>
+</div>
+</div>
+

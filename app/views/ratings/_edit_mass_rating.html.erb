@@ -1,0 +1,56 @@
+<% if @fetched_ratings.present? || @valid_fetched_ratings.present? %>
+<% @ratings = current_user.admin? ? @fetched_ratings : @valid_fetched_ratings %>
+<section class="panel panel-default">
+	<div class="panel-heading ">
+		<h3> <i class="fa fa-star-o"></i>&nbsp;Update Ratings 
+			<table id="date_table" class="pull-right">
+				<tr>
+					<td><h4 align="center">Date</h4></td> 
+					<td><%= text_field_tag 'date[rating_date]',"",:class => "form-control dp", :value => passed_date, :id => "date_value" %></td>
+				</tr>
+			</table></h3>
+	</div>
+	<div class="panel-body">
+		<div class="form-horizontal tasi-form col-md-12" id="test" >
+			<div class="row-fluid">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th><h4 align="center">Name</h4></th>
+								<% @factor.each do |factor| %>
+									<th><h4 align="center"><%= factor.name %></h4></th>
+								<% end %>
+								<th><h4 align="center">Remarks</h4></th><th><h4 align="center">Action</h4></th>
+							</tr>
+						</thead>
+						<tbody>
+						<% @ratings.each do |rating| %>
+							<tr>							
+							<%= form_for rating, method: :put, :remote => true do |f| %>
+								<td><h4><%= Employee.find(rating.employee_id).name %></h4>
+								<%= f.hidden_field :employee_id %></td>
+								<%= f.hidden_field :id %>
+								<%= f.fields_for :rating_details do |ff| %>
+							 		<%= ff.hidden_field :factor_id %>
+							 		<%= ff.hidden_field :id %> 
+							 		<td align="center">
+							 		<%= ff.select(:rating_value, ff.object.factor.factor_guidlines.collect {|g| [g.description, g.value]}, {} ,{:class => "col-md-2 input"}) -%>
+							 		</td>
+								<% end %>
+								<td><%= f.text_area :remarks, :class => "form-control remark-input", :rows => 1 %></td>
+								<td><%= button_tag :class => "btn btn-warning" do %>
+  										<i class="fa fa-pencil fa-lg"></i>
+										<% end %>
+								</td>
+							<% end %>
+						<% end %>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<% end %>

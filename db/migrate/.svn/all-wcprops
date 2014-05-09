@@ -1,0 +1,263 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/Ratingsystem/!svn/ver/570/ROR/db/migrate
+END
+20140322112740_add_project_manager_id_to_rating.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/Ratingsystem/!svn/ver/505/ROR/db/migrate/20140322112740_add_project_manager_id_to_rating.rb
+END
+20140311081842_change_integer_type_in_employee.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140311081842_change_integer_type_in_employee.rb
+END
+20140319092333_add_active_to_employee.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140319092333_add_active_to_employee.rb
+END
+20140313094948_add_default_value_to_badge.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140313094948_add_default_value_to_badge.rb
+END
+20140122042657_create_ratings.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140122042657_create_ratings.rb
+END
+20140311053504_create_factor_guidlines.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140311053504_create_factor_guidlines.rb
+END
+20140122072513_add_attachment_photo_to_teams.rb
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140122072513_add_attachment_photo_to_teams.rb
+END
+20140110062902_create_technologies.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140110062902_create_technologies.rb
+END
+20140408073256_create_leave_reason_categories.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/Ratingsystem/!svn/ver/535/ROR/db/migrate/20140408073256_create_leave_reason_categories.rb
+END
+20140307073104_add_column_to_employee.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140307073104_add_column_to_employee.rb
+END
+20140205114750_add_index_to_ratings.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140205114750_add_index_to_ratings.rb
+END
+20140110062836_create_roles.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140110062836_create_roles.rb
+END
+20140409075939_add_reason_category_id_to_leave.rb
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/Ratingsystem/!svn/ver/560/ROR/db/migrate/20140409075939_add_reason_category_id_to_leave.rb
+END
+20140313092341_add_badge_to_employee.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140313092341_add_badge_to_employee.rb
+END
+20140116120922_create_access_keys.rb
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140116120922_create_access_keys.rb
+END
+20140110063020_create_teams.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140110063020_create_teams.rb
+END
+20140122042936_create_rating_details.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140122042936_create_rating_details.rb
+END
+20140110062731_create_employees.rb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140110062731_create_employees.rb
+END
+20140116101201_add_auth_to_employees.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140116101201_add_auth_to_employees.rb
+END
+20140311075058_add_column_known_technology_to_employee.rb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140311075058_add_column_known_technology_to_employee.rb
+END
+20140201044801_add_total_rating_to_ratings.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140201044801_add_total_rating_to_ratings.rb
+END
+20140321105218_add_date_to_employee.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/Ratingsystem/!svn/ver/501/ROR/db/migrate/20140321105218_add_date_to_employee.rb
+END
+20140418062955_add_event_id_to_employee.rb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/Ratingsystem/!svn/ver/552/ROR/db/migrate/20140418062955_add_event_id_to_employee.rb
+END
+20140318095428_create_delayed_jobs.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/Ratingsystem/!svn/ver/570/ROR/db/migrate/20140318095428_create_delayed_jobs.rb
+END
+20140320044409_add_active_to_factor_guidlines.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140320044409_add_active_to_factor_guidlines.rb
+END
+20140121092643_create_factors.rb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140121092643_create_factors.rb
+END
+20140328052631_add_slug_to_employee.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/Ratingsystem/!svn/ver/520/ROR/db/migrate/20140328052631_add_slug_to_employee.rb
+END
+20140328072933_add_slug_to_teams.rb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/Ratingsystem/!svn/ver/521/ROR/db/migrate/20140328072933_add_slug_to_teams.rb
+END
+20140419100046_add_google_leave_id_to_leave.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/Ratingsystem/!svn/ver/558/ROR/db/migrate/20140419100046_add_google_leave_id_to_leave.rb
+END
+20140315100328_chage_type_of_columns_of_leave.rb
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140315100328_chage_type_of_columns_of_leave.rb
+END
+20140322085338_remove_fields_from_leave.rb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/Ratingsystem/!svn/ver/502/ROR/db/migrate/20140322085338_remove_fields_from_leave.rb
+END
+20140313064951_remove_possible_values_from_factor.rb
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140313064951_remove_possible_values_from_factor.rb
+END
+20140408111513_add_pic_url_to_employee.rb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/Ratingsystem/!svn/ver/541/ROR/db/migrate/20140408111513_add_pic_url_to_employee.rb
+END
+20140312054329_create_leaves.rb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140312054329_create_leaves.rb
+END
+20140205114017_add_index_to_employee.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140205114017_add_index_to_employee.rb
+END
+20140129045048_add_active_to_factors.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140129045048_add_active_to_factors.rb
+END
+20140313070156_remove_default_value_from_factor.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140313070156_remove_default_value_from_factor.rb
+END
+20140205114327_add_index_to_factor.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140205114327_add_index_to_factor.rb
+END
+20140409104309_add_status_to_leave_reason_category.rb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/Ratingsystem/!svn/ver/548/ROR/db/migrate/20140409104309_add_status_to_leave_reason_category.rb
+END
+20140129053841_add_default_value_to_factors.rb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140129053841_add_default_value_to_factors.rb
+END
+20140315090430_add_column_to_leave.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/Ratingsystem/!svn/ver/498/ROR/db/migrate/20140315090430_add_column_to_leave.rb
+END
+20140328071649_add_slug_to_factors.rb
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/Ratingsystem/!svn/ver/521/ROR/db/migrate/20140328071649_add_slug_to_factors.rb
+END
+20140324085324_change_column_type_leave.rb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/Ratingsystem/!svn/ver/509/ROR/db/migrate/20140324085324_change_column_type_leave.rb
+END

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Your import rating status </h3>
+    <p>
+        Your Ratings have been imported Successfully.!
+        <div class="alert alert-info">
+          <strong>Note:</strong> Only new Rating Entries are considered.
+          Existing entries are skipped.
+        </div>
+    </p>
+    <% if @errors.present? %>
+      <p>
+        <div class="alert alert-danger">
+        <ul>Following are the errors :
+          <% @errors.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+        </div>
+      </p>
+    <% end %>
+
+  </body>
+</html>

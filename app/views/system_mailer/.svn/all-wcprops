@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/Ratingsystem/!svn/ver/558/ROR/app/views/system_mailer
+END
+notification_of_leave_application.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/Ratingsystem/!svn/ver/558/ROR/app/views/system_mailer/notification_of_leave_application.html.erb
+END
+factors_change_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/Ratingsystem/!svn/ver/498/ROR/app/views/system_mailer/factors_change_email.html.erb
+END
+factors_change_email.text.erb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/Ratingsystem/!svn/ver/498/ROR/app/views/system_mailer/factors_change_email.text.erb
+END
+notification_of_leave_status_change.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/Ratingsystem/!svn/ver/558/ROR/app/views/system_mailer/notification_of_leave_status_change.html.erb
+END
+reminder_to_rate_team_members.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/Ratingsystem/!svn/ver/513/ROR/app/views/system_mailer/reminder_to_rate_team_members.html.erb
+END
+import_ratings_email.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/Ratingsystem/!svn/ver/504/ROR/app/views/system_mailer/import_ratings_email.html.erb
+END
+notification_of_rating_to_admin.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/Ratingsystem/!svn/ver/555/ROR/app/views/system_mailer/notification_of_rating_to_admin.html.erb
+END

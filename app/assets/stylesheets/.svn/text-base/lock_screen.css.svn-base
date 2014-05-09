@@ -1,0 +1,7 @@
+ /*
+ *= require_self
+ *= require font-awesome
+ *= require 'dashboard/bootstrap.min'
+ *= require 'dashboard/style' 
+ *= require 'dashboard/jquery.gritter'
+*/ 

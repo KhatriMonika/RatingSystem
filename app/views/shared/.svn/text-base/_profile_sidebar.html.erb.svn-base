@@ -1,0 +1,62 @@
+<aside class="profile-nav col-lg-3">
+  <section class="panel">
+    <div class="user-heading round">
+
+      <a href="#">
+        <%#= gravatar_for @employee %>
+        <%= image_tag @employee.gravatar_url, :size => '150x150' %></a>
+      <h1><%= @employee.name.capitalize %></h1>
+      <p><%= @employee.email %></p>
+    </div>
+
+    <ul class="nav nav-pills nav-stacked">
+      <% if current_page?(employee_path(@employee.id)) %>
+        <li class="active">
+      <% else %>
+        <li>
+      <% end %>
+        <%= link_to (employee_path(@employee.slug))  do %>
+        <i class="fa fa-user"></i>  Profile
+        <% end %> 
+      </li>
+      <% if current_user.id == @employee.id || current_user.admin? %>
+        <% if current_page?(edit_employee_path(current_user.id)) %>
+          <li class="active">
+        <% else %>
+          <li>
+        <% end %>
+          <%= link_to (edit_employee_path(@employee.slug)) do %>
+            <i class="fa fa-edit"> </i>  Edit Profile
+          <% end %>
+        </li>
+      <% end %>
+      <% if !(current_user.id == @employee.id) %>
+          <% if current_user.project_manager? && @employee.team == current_user.team || current_user.admin? %>
+          <% if current_page?(new_employee_rating_path(@employee.id)) %>
+            <li class="active">
+          <% else %>
+            <li>
+          <% end %>
+            <%= link_to (new_employee_rating_path(@employee.slug)) do %>
+              <i class="fa fa-star"> </i>  Rate Employee
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+      <% if (current_user.admin? || @employee.id == current_user.id || current_user.project_manager?) %>
+        <% if current_page?(employee_ratings_path(@employee.id)) %>
+          <li class="active">
+        <% else %>
+          <li>
+        <% end %>
+
+        <% if !(current_user.admin? && @employee.id == current_user.id) %>
+          <%= link_to (employee_ratings_path(@employee.slug)) do %>
+          <i class="fa fa-eye"> </i> View Rating
+          <% end %>
+        <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</aside>
