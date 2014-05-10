@@ -43,10 +43,9 @@ class DashboardController < ApplicationController
     render :text => (events + google_events).to_json
   end  
  
-<<<<<<< .mine
-=======
+
   private
->>>>>>> .r569
+
   def params_check
     # date set
       if params[:startdate].present?  && params[:enddate].present? 
@@ -79,40 +78,9 @@ class DashboardController < ApplicationController
 
   end
 
-<<<<<<< .mine
-  def dashboard_events
-    dashboard_calendar_events
-    render :text => (@events).to_json
-    google_events = []
-    data = JSON.parse(Net::HTTP.get(URI.parse("https://www.googleapis.com/calendar/v3/calendars/#{current_user.email}/events?access_token=#{current_user.auth_token}")))  
-    data["items"].each do |item|
-      google_events << {:id => item["id"], :title => item["summary"], :description => "Test", :start => "#{item["start"]["dateTime"].present? ? (item["start"]["dateTime"]).to_date.to_s : (item["start"]["date"]).to_date.to_s}", :end => "#{item["end"]["dateTime"].present? ? (item["end"]["dateTime"]).to_date.to_s : (item["end"]["date"]).to_date.to_s}", :backgroundColor => 'purple', :borderColor => 'purple'} 
-    end
-    if current_user.admin?
-      @leaves = Leave.where(status: Leave::STATUS.index("Sanctioned"))
-    elsif current_user.project_manager? && current_user.team.present? && current_user.team.team_members.present?
-      employee_ids = current_user.team.team_members.pluck("id")
-      employee_ids << current_user.id
-      @leaves = Leave.where(status: Leave::STATUS.index("Sanctioned"),employee_id: employee_ids)
-    else
-      @leaves = Leave.where(status: Leave::STATUS.index("Sanctioned"),employee_id: current_user.id)
-    end
-    upcomming_birthdays
-    events = [] 
-    @leaves.each do |leave|
-      events << {:id => leave.id, :title => leave.employee.name == current_user.name ? "me" : leave.employee.name, :description => leave.reason_of_leave, :start => "#{leave.leave_required_from.iso8601}", :end => "#{leave.leave_required_to.iso8601}",:backgroundColor => leave.reason_category.colour , :borderColor => leave.reason_category.colour }
-    end
-    if @birthdays.present?
-      @birthdays.each  do |bday|
-        events << {:id => bday.id, :title => bday.name + " Birthday", :description => "Birthday", :start => "#{Date.today.year}-#{bday.birthdate.month}-#{bday.birthdate.day}".to_date.iso8601, :end => "#{Date.today.year}-#{bday.birthdate.month}-#{bday.birthdate.day}".to_date.iso8601,:backgroundColor => 'pink', :borderColor => 'pink'}
-      end
-    end
-    render :text => (events + google_events).to_json
-=======
   def max_rating_entry
     # this method return the maximum rating days entries from employee
     @max_rating_count = (Rating.rating_date(@start_date,@end_date).group(:employee_id).count).values.max 
     @max_rating_count.present? ? @max_rating_count : nil   
->>>>>>> .r569
   end
 end
